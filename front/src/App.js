@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react'
 function App() {
 	const [message, setMessage] = useState('');
 	useEffect(() => {
-		fetch('/api')
+		fetch('/sql')
 		.then((res) => res.json())
 		.then((data) => setMessage(data.message));
 	},[])
