@@ -47,7 +47,7 @@ const AuthComponent = () => {
   };
 
   return (
-    <div>
+    <div className='Authcomponent'>
       {user ? (
         <div>
           <p>ログインユーザー: {user.displayName}</p>

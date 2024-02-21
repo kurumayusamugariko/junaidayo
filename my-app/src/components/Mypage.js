@@ -1,19 +1,23 @@
+import React,{ useEffect, useState } from "react";
 import "../css/App.css";
 import firebaseApp from "./fire";
 import firestoreDB from "./fire";
 import { collection, getDocs } from "firebase/firestore";
 import AuthComponent from "./AuthComponent";
-import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
+
 
 function Mypage() {
   //useState初期設定
   const [todos, setTodos] = useState([]);
 
-  //データ取得用配列
-  const arrList = [];
-
   //useEffectの処理
   useEffect(() => {
+
+		//データ取得用配列
+		const arrList = [];
+
     const fireStorePostData = collection(firestoreDB, "todoposts");
     getDocs(fireStorePostData).then((snapShot) => {
       snapShot.forEach((docs) => {
@@ -30,21 +34,20 @@ function Mypage() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="Mypage">
+			<h1> マイページ </h1>
       <ul>
         {todos.map((todo) => {
-					// return(
+					return(
           <li key={todo.id}>
             <div>タイトル：{todo.title}</div>
             <div>ステータス：{todo.status}</div>
             <div>詳細：{todo.shousai}</div>
           </li>
-					// );
+					);
         })}
       </ul>
-
-      <h1> ログイン機能 </h1>
-      <AuthComponent />
+			<Link to="/">戻る</Link>
     </div>
   );
 }
