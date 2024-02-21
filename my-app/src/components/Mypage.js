@@ -47,7 +47,7 @@ function Mypage() {
 					);
         })}
       </ul>
-			<Link to="/">戻る</Link>
+			<Link className="link" to="/"><button>戻る</button></Link>
     </div>
   );
 }

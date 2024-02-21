@@ -64,6 +64,7 @@ const AuthComponent = () => {
           <button onClick={handleSignIn}>ログイン</button>
         </div>
       )}
+			<Link to="/"><button>戻る</button></Link>
     </div>
   );
 };
