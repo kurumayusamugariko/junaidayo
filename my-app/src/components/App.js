@@ -1,5 +1,4 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "../css/App.css";
 import firebaseApp from "./fire";
 import firestoreDB from "./fire";
 import { collection, getDocs } from "firebase/firestore";
