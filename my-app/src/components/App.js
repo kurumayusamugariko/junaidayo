@@ -1,9 +1,16 @@
+import React,{ useEffect, useState } from "react";
 import "../css/App.css";
+//firebase
 import firebaseApp from "./fire";
 import firestoreDB from "./fire";
 import { collection, getDocs } from "firebase/firestore";
 import AuthComponent from "./AuthComponent";
-import { useEffect, useState } from "react";
+
+//コンポーネント
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Mypage from './Mypage';
+
 
 function App() {
   //useState初期設定
@@ -31,20 +38,18 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
-        {todos.map((todo) => {
-          return (
-            <li key={todo.id}>
-              <div>タイトル：{todo.title}</div>
-              <div>ステータス：{todo.status}</div>
-              <div>詳細：{todo.shousai}</div>
-            </li>
-          );
-        })}
-      </ul>
+      <h1> 純愛だよ </h1>
+      
 
-      <h1> ログイン機能 </h1>
-      <AuthComponent />
+		<Router>
+			<AuthComponent />
+			<Link to="/mypage" element={<Mypage />}>マイページ</Link>
+
+			<Routes>
+				<Route path="/mypage" element={<Mypage />} />
+			</Routes>
+    </Router>
+
     </div>
   );
 }
