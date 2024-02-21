@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, googleProvider } from './fire';
 
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Mypage from './Mypage';
+
 
 const AuthComponent = () => {
   const [user, setUser] = useState(null); // ログイン状態
@@ -48,6 +52,7 @@ const AuthComponent = () => {
 
   return (
     <div className='Authcomponent'>
+			<h2>ログイン画面</h2>
       {user ? (
         <div>
           <p>ログインユーザー: {user.displayName}</p>
