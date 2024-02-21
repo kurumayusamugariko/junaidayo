@@ -1,5 +1,4 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "../css/App.css";
 import firebaseApp from "./fire";
 import firestoreDB from "./fire";
 import { collection, getDocs } from "firebase/firestore";
@@ -34,13 +33,13 @@ function App() {
     <div className="App">
       <ul>
         {todos.map((todo) => {
-					// return(
+					return(
           <li key={todo.id}>
             <div>タイトル：{todo.title}</div>
             <div>ステータス：{todo.status}</div>
             <div>詳細：{todo.shousai}</div>
           </li>
-					// );
+					);
         })}
       </ul>
 
