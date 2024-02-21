@@ -9,11 +9,11 @@ function App() {
   //useState初期設定
   const [todos, setTodos] = useState([]);
 
-  //データ取得用配列
-  const arrList = [];
-
   //useEffectの処理
   useEffect(() => {
+    //データ取得用配列
+    const arrList = [];
+
     const fireStorePostData = collection(firestoreDB, "todoposts");
     getDocs(fireStorePostData).then((snapShot) => {
       snapShot.forEach((docs) => {
@@ -33,13 +33,13 @@ function App() {
     <div className="App">
       <ul>
         {todos.map((todo) => {
-					return(
-          <li key={todo.id}>
-            <div>タイトル：{todo.title}</div>
-            <div>ステータス：{todo.status}</div>
-            <div>詳細：{todo.shousai}</div>
-          </li>
-					);
+          return (
+            <li key={todo.id}>
+              <div>タイトル：{todo.title}</div>
+              <div>ステータス：{todo.status}</div>
+              <div>詳細：{todo.shousai}</div>
+            </li>
+          );
         })}
       </ul>
 
