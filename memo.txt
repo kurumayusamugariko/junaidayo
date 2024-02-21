@@ -1,0 +1,7 @@
+実行は、cd my-app をしてから npm start
+
+componentsフォルダは自分で作成
+コンポーネントを作るときはこのフォルダに入れる
+
+cssはpublic内だと反応しないため、srcフォルダ内に
+cssフォルダを作った
