@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import AuthComponent from "./AuthComponent";
 import { useEffect, useState } from "react";
 
-function App() {
+function Mypage() {
   //useState初期設定
   const [todos, setTodos] = useState([]);
 
@@ -33,13 +33,13 @@ function App() {
     <div className="App">
       <ul>
         {todos.map((todo) => {
-					return(
+					// return(
           <li key={todo.id}>
             <div>タイトル：{todo.title}</div>
             <div>ステータス：{todo.status}</div>
             <div>詳細：{todo.shousai}</div>
           </li>
-					);
+					// );
         })}
       </ul>
 
@@ -49,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default Mypage;
