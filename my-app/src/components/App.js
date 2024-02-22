@@ -60,3 +60,19 @@ function App() {
 }
 
 export default App;
+
+// import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+// <Router>
+// <Link className="link" to="/Auth" element={<AuthComponent />}>
+// 	<button>ログイン</button>
+// </Link>
+// {/* <AuthComponent/> */}
+// <Link to="/mypage" element={<Mypage />}>
+// 	<button>マイページ</button>
+// </Link>
+
+// <Routes>
+// 	<Route path="/Auth" element={<AuthComponent />} />
+// 	<Route path="/mypage" element={<Mypage />} />
+// </Routes>
+// </Router>
