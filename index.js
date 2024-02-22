@@ -1,4 +1,5 @@
-require('dotenv').config();
+const env = require('dotenv').config();
+console.log(env);
 
 const express = require('express');
 const mysql = require('mysql2');
@@ -7,13 +8,13 @@ const port = process.env.PORT || 3001
 
 const db = mysql.createPool({
 
-  host: 'localhost',
+  host: env.parsed.DB_HOST,
 
-  user: 'root',
+  user: env.parsed.DB_USERNAME,
 
-  password: 'password',
+  password: env.parsed.DB_PASSWORD,
 
-  database: 'junaidayo',
+  database: env.parsed.DB_DATABASE,
 
 });
 
