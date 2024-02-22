@@ -1,0 +1,16 @@
+.Mainpage {
+  margin: 0 auto;
+	padding: 10px;
+  width: 800px;
+  background-color: aliceblue;
+}
+.command Button{
+	margin: auto;
+	width: 100%;
+}
+.command Button.newTurn{
+	background-color: rgb(41, 36, 30);
+}
+.command Button.newWave{
+	background-color: rgb(97, 94, 91);
+}
