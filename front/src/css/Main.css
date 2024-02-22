@@ -3,14 +3,51 @@
 	padding: 10px;
   width: 800px;
   background-color: aliceblue;
+	border-radius: 15px;
 }
-.command Button{
+.teamMember{
+	margin-left: 8%;
+}
+.teamMember img{
+	padding: 10px 30px;
+	max-width: 120px;
+}
+.wave{
+	padding: 5px;
+	background-color: rgb(209, 164, 164);
+	font-weight: bold;
+}
+.t{
+	width: 120px;
+	float: left;
+	padding: 10px 30px;
+}
+.turnNumber{
+	width:7%;
+	padding: 10px;
+	float: left;
+	background-color: rgb(223, 212, 201);
+}
+
+.command-container Button{
 	margin: auto;
 	width: 100%;
 }
-.command Button.newTurn{
+Button.newTurn{
 	background-color: rgb(41, 36, 30);
 }
-.command Button.newWave{
+Button.newWave{
 	background-color: rgb(97, 94, 91);
+}
+.memo{
+	margin-top: 10px;
+	border: solid 1px;
+	border-radius: 3px;
+	background-color: rgb(255, 254, 253);
+}
+.contents{
+	margin: 0px;
+	padding: 10px;
+	text-align: left;
+	background-color: rgb(223, 212, 201);
 }

@@ -2,18 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../css/App.css";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import TeamList from "./TeamList";
 import Mainpage from "./Mainpage";
 
 function App() {
-  // const [message, setMessage] = useState('');
-  // useEffect(() => {
-  // 	fetch('/sql')
-  // 	.then((res) => res.json())
-  // 	.then((data) => setMessage(data.message));
-  // },[])
   return (
     <div className="App">
       <h1>純愛だよ</h1>
+			<TeamList/>
       <Router>
         <Link className="link" to="/main" element={<Mainpage />}>メインページ</Link>
         <Routes>
