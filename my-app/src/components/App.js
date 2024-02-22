@@ -7,8 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import AuthComponent from "./AuthComponent";
 
 //コンポーネント
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Mypage from './Mypage';
 
 
