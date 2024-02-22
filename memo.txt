@@ -9,3 +9,18 @@ Node--------
 junaidyo $ npm start
 
 localhost:3001
+
+componentsフォルダは自分で作成
+コンポーネントを作るときはこのフォルダに入れる
+
+cssはpublic内だと反応しないため、srcフォルダ内に
+cssフォルダを作った
+
+Mypage.jsはログイン後の画面を想定
+http://localhost:3000/Myapp
+ログイン画面を作れなければ、App.jsにてメインページを作る。
+
+routerを使おうとしてnpm install react-router-domしたら
+firebaseの中身が消えたり、その他のエラーが出た。
+App.jsのimport { collection, getDocs } from "firebase/firestore";
+をしたら直った。怖すぎ。

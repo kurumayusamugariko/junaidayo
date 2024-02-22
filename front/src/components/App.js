@@ -1,5 +1,5 @@
-import './App.css';
-import {useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
+import '../css/App.css';
 
 function App() {
 	const [message, setMessage] = useState('');
