@@ -1,16 +1,11 @@
-実行は、cd my-app をしてから npm start
+アプリの実行
+React-------
+junaidayo $ cd front
+front $ npm start
 
-componentsフォルダは自分で作成
-コンポーネントを作るときはこのフォルダに入れる
+localhost:3000
 
-cssはpublic内だと反応しないため、srcフォルダ内に
-cssフォルダを作った
+Node--------
+junaidyo $ npm start
 
-Mypage.jsはログイン後の画面を想定
-http://localhost:3000/Myapp
-ログイン画面を作れなければ、App.jsにてメインページを作る。
-
-routerを使おうとしてnpm install react-router-domしたら
-firebaseの中身が消えたり、その他のエラーが出た。
-App.jsのimport { collection, getDocs } from "firebase/firestore";
-をしたら直った。怖すぎ。
+localhost:3001
