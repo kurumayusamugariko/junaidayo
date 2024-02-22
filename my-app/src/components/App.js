@@ -42,10 +42,11 @@ function App() {
       
 
 		<Router>
-			<AuthComponent />
-			<Link to="/mypage" element={<Mypage />}>マイページ</Link>
+			<Link to="/Auth" element={<AuthComponent />}><button>ログイン</button></Link>
+			<Link to="/mypage" element={<Mypage />}><button>マイページ</button></Link>
 
 			<Routes>
+				<Route path="/Auth" element={<AuthComponent />} />
 				<Route path="/mypage" element={<Mypage />} />
 			</Routes>
     </Router>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, googleProvider } from './fire';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 
 const AuthComponent = () => {
@@ -48,6 +49,7 @@ const AuthComponent = () => {
 
   return (
     <div className='Authcomponent'>
+			<h2>ログイン画面</h2>
       {user ? (
         <div>
           <p>ログインユーザー: {user.displayName}</p>
@@ -59,6 +61,7 @@ const AuthComponent = () => {
           <button onClick={handleSignIn}>ログイン</button>
         </div>
       )}
+			<Link to="/">戻る</Link>
     </div>
   );
 };
