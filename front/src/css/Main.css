@@ -1,53 +1,59 @@
 .Mainpage {
   margin: 0 auto;
-	padding: 10px;
+  padding: 10px;
   width: 800px;
-  background-color: aliceblue;
-	border-radius: 15px;
+  background-color: rgb(255, 253, 245);
+  border-radius: 15px;
 }
-.teamMember{
-	margin-left: 8%;
+.teamMember {
+  margin-left: 8%;
 }
-.teamMember img{
-	padding: 10px 30px;
-	max-width: 120px;
+.teamMember img {
+  padding: 10px 30px;
+  max-width: 120px;
 }
-.wave{
-	padding: 5px;
-	background-color: rgb(209, 164, 164);
-	font-weight: bold;
+.wave {
+  padding: 5px;
+  background-color: rgb(209, 164, 164);
+  font-weight: bold;
 }
-.t{
-	width: 120px;
-	float: left;
-	padding: 10px 30px;
+.t {
+  width: 120px;
+  float: left;
+  padding: 10px 30px;
 }
-.turnNumber{
-	width:7%;
-	padding: 10px;
-	float: left;
-	background-color: rgb(223, 212, 201);
+.turnNumber {
+  width: 7%;
+  padding: 10px;
+  float: left;
+  background-color: rgb(223, 212, 201);
 }
 
-.command-container Button{
-	margin: auto;
-	width: 100%;
+.command-container Button {
+  margin: auto;
+  width: 100%;
 }
-Button.newTurn{
-	background-color: rgb(41, 36, 30);
+Button.newTurn {
+  background-color: rgb(41, 36, 30);
 }
-Button.newWave{
-	background-color: rgb(97, 94, 91);
+Button.newTurn:hover {
+  background-color: rgb(41, 36, 30, 0.5);
 }
-.memo{
-	margin-top: 10px;
-	border: solid 1px;
-	border-radius: 3px;
-	background-color: rgb(255, 254, 253);
+Button.newWave {
+  background-color: rgb(97, 94, 91);
 }
-.contents{
-	margin: 0px;
-	padding: 10px;
-	text-align: left;
-	background-color: rgb(223, 212, 201);
+Button.newWave:hover {
+  background-color: rgb(97, 94, 91, 0.5);
+}
+.memo {
+  margin-top: 10px;
+  border: solid 1px;
+  border-radius: 3px;
+  background-color: rgb(255, 254, 253);
+}
+.contents {
+  margin: 0px;
+  padding: 10px;
+  text-align: left;
+  background-color: rgb(223, 212, 201);
 }
