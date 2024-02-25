@@ -20,7 +20,22 @@ Mypage.jsはログイン後の画面を想定
 http://localhost:3000/Myapp
 ログイン画面を作れなければ、App.jsにてメインページを作る。
 
-routerを使おうとしてnpm install react-router-domしたら
-firebaseの中身が消えたり、その他のエラーが出た。
-App.jsのimport { collection, getDocs } from "firebase/firestore";
-をしたら直った。怖すぎ。
+npm install react-router-dom
+npm install dotenv
+
+
+// import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+// <Router>
+// <Link className="link" to="/Auth" element={<AuthComponent />}>
+// 	<button>ログイン</button>
+// </Link>
+// {/* <AuthComponent/> */}
+// <Link to="/mypage" element={<Mypage />}>
+// 	<button>マイページ</button>
+// </Link>
+
+// <Routes>
+// 	<Route path="/Auth" element={<AuthComponent />} />
+// 	<Route path="/mypage" element={<Mypage />} />
+// </Routes>
+// </Router>
