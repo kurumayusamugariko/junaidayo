@@ -172,7 +172,11 @@ function Edit() {
         <p>{message}</p>
       </div>
 
-      <Link to="/main">保存</Link>
+      <div className="toMain">
+        <Link to="/main">
+          <Button variant="contained">保存</Button>
+        </Link>
+      </div>
     </div>
   );
 }
