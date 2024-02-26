@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TeamList from "./TeamList";
 import Mainpage from "./Mainpage";
 import Edit from "./Edit";
-import NewTurn from "./NewTurn";
+
+import Button from "@mui/material/Button";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <h1>純愛だよ</h1>
 			<TeamList/>
       <Router>
-        <Link className="link" to="/main" element={<Mainpage />}>メインページ</Link>
+        <Link className="link" to="/main" element={<Mainpage />}><Button>メインページ</Button></Link>
         <Routes>
           <Route path="/main" element={<Mainpage />} />
 					<Route path="/edit" element={<Edit />} />
