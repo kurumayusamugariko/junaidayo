@@ -12,13 +12,23 @@
 	margin-left: 10px;
 }
 
-.teamMember {
-  margin-left: 8%;
+.teamMember{
+  margin-left: 80px;
+	height: 200px;
+	position: relative;
+}
+.teamMember li{
+	float: left;
 }
 .teamMember img {
   padding: 10px 30px;
   max-width: 120px;
 }
+.teamMember p{
+	margin: 0 auto;
+	max-width: 120px;
+}
+
 .wave {
   width: 788px;
   padding: 5px;
@@ -71,6 +81,11 @@ Button.reset:hover {
   padding: 10px;
   float: left;
   background-color: rgb(223, 212, 201);
+}
+.turn{
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
 }
 ul {
   margin: 0 auto;

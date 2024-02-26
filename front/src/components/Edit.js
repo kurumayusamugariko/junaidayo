@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "../css/Edit.css";
 
 import Button from "@mui/material/Button";
-import ReactDOM from "react-dom";
-import NewTurn from "./NewTurn";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 function Edit() {
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    setImage(URL.createObjectURL(e.target.files[0]));
+  };
+
   const [message, setMessage] = useState("");
   useEffect(() => {
     fetch("/sql")
@@ -38,10 +43,13 @@ function Edit() {
       ]);
     }
   };
-	
-	const reset = () => {
-    if (window.confirm('本当にリセットしますか？')) {
-      setEvents([{ type: 'wave', index: 0 }, { type: 'turn', index: 0 }]); // eventsを初期状態にリセット
+
+  const reset = () => {
+    if (window.confirm("本当にリセットしますか？")) {
+      setEvents([
+        { type: "wave", index: 0 },
+        { type: "turn", index: 0 },
+      ]); // eventsを初期状態にリセット
       setWaveIndex(0); // waveIndexを初期状態にリセット
       setTurnIndex(0); // turnIndexを初期状態にリセット
     }
@@ -51,17 +59,30 @@ function Edit() {
     <div className="Mainpage">
       <h1>編集ページ</h1>
       <form method="post">
-
         <div className="teamName">
           <label for="teamName">チーム名 :</label>
-          <input type="text" id="teamName" defaultValue={message} />
+          <input type="text" id="teamName" defaultValue="漏瑚対策" />
         </div>
 
         <div className="teamMember">
-          <img className="m1" alt="１" src="okkotu.jpg"></img>
-          <img className="m2" alt="２" src="okkotu.jpg"></img>
-          <img className="m3" alt="３" src="okkotu.jpg"></img>
-          <img className="m4" alt="４" src="okkotu.jpg"></img>
+          <ul>
+            <li className="m1">
+              <img alt="member1" src="okkotu.jpg"></img>
+							<p>乙骨</p>
+            </li>
+						<li className="m2">
+              <img alt="member2" src="okkotu.jpg"></img>
+							<p>乙骨</p>
+            </li>
+						<li className="m3">
+              <img alt="member3" src="okkotu.jpg"></img>
+							<p>乙骨</p>
+            </li>
+						<li className="m4">
+              <img alt="member4" src="okkotu.jpg"></img>
+							<p>乙骨</p>
+            </li>
+          </ul>
         </div>
 
         <div className="command-container">
@@ -176,8 +197,9 @@ function Edit() {
           <Button onClick={newWave} className="newWave" variant="contained">
             + NEW WAVE
           </Button>
-					<br></br>
+          <br></br>
           <Button onClick={reset} className="reset" variant="contained">
+            <RestartAltIcon />
             RESET
           </Button>
         </div>
