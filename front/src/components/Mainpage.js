@@ -16,11 +16,13 @@ function Mainpage() {
     <div className="Mainpage">
       <div className="teamName">
         <h3>漏瑚対策</h3>
-      </div>
 
-			<div className="toEdit">
-				<Link to="/edit">編集</Link>
-			</div>
+        <Link to="/edit">
+          <Button className="toEdit" variant="contained">
+            編集
+          </Button>
+        </Link>
+      </div>
 
       <div className="teamMember">
         <img className="m1" alt="１" src="okkotu.jpg"></img>

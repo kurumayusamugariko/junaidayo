@@ -6,8 +6,6 @@ import Button from "@mui/material/Button";
 import ReactDOM from "react-dom";
 import NewTurn from "./NewTurn";
 
-
-          
 function Edit() {
   const [message, setMessage] = useState("");
   useEffect(() => {
@@ -15,8 +13,6 @@ function Edit() {
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
-
-
 
   return (
     <div className="Mainpage">
@@ -67,10 +63,10 @@ function Edit() {
             </div>
           </div>
         </div>
-        
-         <Button className="newTurn" variant="contained">
+
+        <Button className="newTurn" variant="contained">
           + NEW TURN
-        </Button> 
+        </Button>
         <br></br>
         <Button className="newWave" variant="contained">
           + NEW WAVE
@@ -82,7 +78,11 @@ function Edit() {
         <p>{message}</p>
       </div>
 
-      <Link to="/main">保存</Link>
+      <div className="toMain">
+        <Link to="/main">
+          <Button variant="contained">保存</Button>
+        </Link>
+      </div>
     </div>
   );
 }

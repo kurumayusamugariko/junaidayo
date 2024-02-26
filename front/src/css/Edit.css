@@ -57,3 +57,7 @@ Button.newWave:hover {
   text-align: left;
   background-color: rgb(223, 212, 201);
 }
+
+.toMain {
+  margin-top: 15px;
+}

@@ -6,7 +6,10 @@
   border-radius: 15px;
 }
 .teamMember {
+  display: inline-block;
+  text-align: center;
   margin-left: 8%;
+  margin-top: 20px;
 }
 .teamMember img {
   padding: 10px 30px;
@@ -56,4 +59,15 @@ Button.newWave:hover {
   padding: 10px;
   text-align: left;
   background-color: rgb(223, 212, 201);
+}
+
+.teamName h3 {
+  display: inline-block;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.toEdit {
+  display: inline-block;
+  left: 250px;
 }
