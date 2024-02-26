@@ -17,18 +17,6 @@
   background-color: rgb(209, 164, 164);
   font-weight: bold;
 }
-.t {
-  width: 120px;
-  float: left;
-  padding: 10px 30px;
-}
-.turnNumber {
-  width: 7%;
-  padding: 10px;
-  float: left;
-  background-color: rgb(223, 212, 201);
-}
-
 .command-container Button {
   margin: auto;
   width: 100%;
@@ -56,4 +44,22 @@ Button.newWave:hover {
   padding: 10px;
   text-align: left;
   background-color: rgb(223, 212, 201);
+}
+.turnNumber {
+  width: 7%;
+  padding: 10px;
+  float: left;
+  background-color: rgb(223, 212, 201);
+}
+ul{
+ margin: 0 auto;
+ padding: 0;
+}
+li {
+  list-style: none;
+}
+select{
+	width: 180px;
+	margin: auto;
+	display: inline-block;
 }

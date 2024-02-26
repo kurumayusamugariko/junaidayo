@@ -6,7 +6,7 @@ const TestComponent = () =>{
         <div className="turnNumber">1</div>
         <div className="first t">
           <select>
-            <option value="firstOption">1と技A</option>
+            <option value="firstOption">1に技A</option>
             <option value="secondOption">2ndOption</option>
             <option value="3rdOption">3rdOption</option>
             <option value="4thOption">4thOption</option>
