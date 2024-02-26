@@ -6,16 +6,23 @@ import TeamList from "./TeamList";
 import Mainpage from "./Mainpage";
 import Edit from "./Edit";
 
+//マテリアルUI
+import Button from "@mui/material/Button";
+
 function App() {
   return (
     <div className="App">
       <h1>純愛だよ</h1>
-			<TeamList/>
+      <TeamList />
       <Router>
-        <Link className="link" to="/main" element={<Mainpage />}>メインページ</Link>
+        <Link className="link" to="/main" element={<Mainpage />}>
+          <Button className="main" variant="text">
+            漏瑚対策
+          </Button>
+        </Link>
         <Routes>
           <Route path="/main" element={<Mainpage />} />
-					<Route path="/edit" element={<Edit />} />
+          <Route path="/edit" element={<Edit />} />
         </Routes>
       </Router>
     </div>
