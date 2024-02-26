@@ -20,6 +20,9 @@
   background-color: rgb(209, 164, 164);
   font-weight: bold;
 }
+.turn{
+	height: 42px;
+}
 .t {
   width: 120px;
   float: left;

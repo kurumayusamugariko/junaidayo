@@ -13,28 +13,20 @@
   max-width: 120px;
 }
 .wave {
+  width: 788px;
   padding: 5px;
   background-color: rgb(209, 164, 164);
   font-weight: bold;
+  display: block;
+  height: auto;
 }
-.t {
-  width: 120px;
-  float: left;
-  padding: 10px 30px;
-}
-.turnNumber {
-  width: 7%;
-  padding: 10px;
-  float: left;
-  background-color: rgb(223, 212, 201);
-}
-
 .command-container Button {
   margin: auto;
   width: 100%;
 }
 Button.newTurn {
   background-color: rgb(41, 36, 30);
+  margin-top: 42px;
 }
 Button.newTurn:hover {
   background-color: rgb(41, 36, 30, 0.5);
@@ -57,7 +49,24 @@ Button.newWave:hover {
   text-align: left;
   background-color: rgb(223, 212, 201);
 }
-
 .toMain {
   margin-top: 15px;
+}
+.turnNumber {
+  width: 7%;
+  padding: 10px;
+  float: left;
+  background-color: rgb(223, 212, 201);
+}
+ul {
+  margin: 0 auto;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+select {
+  width: 180px;
+  margin: auto;
+  display: inline-block;
 }
