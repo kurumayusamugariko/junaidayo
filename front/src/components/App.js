@@ -4,6 +4,7 @@ import "../css/App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TeamList from "./TeamList";
 import Mainpage from "./Mainpage";
+import Edit from "./Edit";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Link className="link" to="/main" element={<Mainpage />}>メインページ</Link>
         <Routes>
           <Route path="/main" element={<Mainpage />} />
+					<Route path="/edit" element={<Edit />} />
         </Routes>
       </Router>
     </div>
