@@ -39,3 +39,23 @@ npm install dotenv
 // 	<Route path="/mypage" element={<Mypage />} />
 // </Routes>
 // </Router>
+
+//2/26 am3:00 はつね
+//ReactDomの時代はもう終わったらしい
+//作ったファイルTestComponent.js,NewTurn.js,CreateButton.js
+//createRootを使う
+//TestComponentで返したいnewTurnの中身、
+//NewTurn.jsでボタンをクリックした際に生成されるようにしたけど、
+//それをedit.jsにどう表示させるのかがわからないままです
+// const CreateButton =()=>{
+//             return(
+//                 <div>
+//                 <NewTurn />
+//                 <Button className="newTurn" variant="contained">
+//                 + NEW TURN
+//               </Button>
+//               </div> 
+//             );
+//            };
+// export default CreacteButton;
+
