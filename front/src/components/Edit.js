@@ -29,6 +29,9 @@ function Edit() {
     };
     fileInput.click();
   };
+	console.log("メンバー画像");
+	console.log(imageSrcs);
+
   //sqlから表示「じゃがいも」
   const [message, setMessage] = useState("");
   useEffect(() => {
@@ -73,7 +76,8 @@ function Edit() {
       setTurnIndex(0); // turnIndexを初期状態にリセット
     }
   };
-  console.log(events); //コマンドの中身を確認
+  console.log("コマンドの中身"); //コマンドの中身を確認
+	console.log(events);
 
   return (
     <div className="Mainpage">
