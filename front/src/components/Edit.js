@@ -6,12 +6,30 @@ import Button from "@mui/material/Button";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 function Edit() {
-  const [image, setImage] = useState(null);
+  //画像関係
+  const [imageSrcs, setImageSrcs] = useState({
+    member1: "okkotu.jpg",
+    member2: "okkotu.jpg",
+    member3: "okkotu.jpg",
+    member4: "okkotu.jpg",
+  });
 
-  const handleImageChange = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+  const handleImageUpload = (member) => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.onchange = (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageSrcs((prev) => ({ ...prev, [member]: reader.result }));
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    };
+    fileInput.click();
   };
-
+  //sqlから表示「じゃがいも」
   const [message, setMessage] = useState("");
   useEffect(() => {
     fetch("/sql")
@@ -19,6 +37,7 @@ function Edit() {
       .then((data) => setMessage(data.message));
   }, []);
 
+  //コマンド関係
   const [events, setEvents] = useState([
     { type: "wave", index: 0 },
     { type: "turn", index: 0 },
@@ -54,7 +73,7 @@ function Edit() {
       setTurnIndex(0); // turnIndexを初期状態にリセット
     }
   };
-	console.log(events);//コマンドの中身を確認
+  console.log(events); //コマンドの中身を確認
 
   return (
     <div className="Mainpage">
@@ -68,20 +87,36 @@ function Edit() {
         <div className="teamMember">
           <ul>
             <li className="m1">
-              <img alt="member1" src="okkotu.jpg"></img>
-							<p>乙骨</p>
+              <img
+                alt="member1"
+                src={imageSrcs.member1}
+                onClick={() => handleImageUpload("member1")}
+              />
+              <p>乙骨</p>
             </li>
-						<li className="m2">
-              <img alt="member2" src="okkotu.jpg"></img>
-							<p>乙骨</p>
+            <li className="m2">
+              <img
+                alt="member2"
+                src={imageSrcs.member2}
+                onClick={() => handleImageUpload("member2")}
+              />
+              <p>乙骨</p>
             </li>
-						<li className="m3">
-              <img alt="member3" src="okkotu.jpg"></img>
-							<p>乙骨</p>
+            <li className="m3">
+              <img
+                alt="member3"
+                src={imageSrcs.member3}
+                onClick={() => handleImageUpload("member3")}
+              />
+              <p>乙骨</p>
             </li>
-						<li className="m4">
-              <img alt="member4" src="okkotu.jpg"></img>
-							<p>乙骨</p>
+            <li className="m4">
+              <img
+                alt="member4"
+                src={imageSrcs.member4}
+                onClick={() => handleImageUpload("member4")}
+              />
+              <p>乙骨</p>
             </li>
           </ul>
         </div>

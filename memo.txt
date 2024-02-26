@@ -58,9 +58,6 @@ firebaseログイン
 
 .gitignoreと.env
 
-キャラの画像は自分らで用意した方が早い説はある。
-キャラ名をどういう風に入れるか悩む
-
 パッケージ一覧
 npm install react-router-dom
 npm install dotenv
