@@ -59,12 +59,4 @@ npm install dotenv
 //            };
 // export default CreacteButton;
 
-
-
-                    <ul>
-                      {turn.map((wave) => (
-                        <li className="wave" key={wave.id}>
-                          wave{wave.id}
-                        </li>
-                      ))}
-                    </ul>
+あみばさんに.gitignoreとenvファイルについて伝える

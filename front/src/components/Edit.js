@@ -14,35 +14,37 @@ function Edit() {
       .then((data) => setMessage(data.message));
   }, []);
 
-  const [events, setEvents] = useState([{ type: 'wave', index: 0 }, { type: 'turn', index: 0 }]);
-  const [waveIndex, setWaveIndex] = useState(0); // waveIndexを状態として保持
-  const [turnIndex, setTurnIndex] = useState(0); // turnIndexを状態として保持
+  const [events, setEvents] = useState([
+    { type: "wave", index: 0 },
+    { type: "turn", index: 0 },
+  ]);
+  const [waveIndex, setWaveIndex] = useState(0);
+  const [turnIndex, setTurnIndex] = useState(0);
 
   const newTurn = () => {
-    setTurnIndex(turnIndex + 1); // turnIndexをインクリメント
+    setTurnIndex(turnIndex + 1);
     setEvents((prevEvents) => [
       ...prevEvents,
       { type: "turn", index: turnIndex + 1 },
     ]);
-		console.log(events);
   };
 
   const newWave = () => {
-		if(events[events.length - 1].type === "turn"){
-    setWaveIndex(waveIndex + 1); // waveIndexをインクリメント
-    setEvents((prevEvents) => [
-      ...prevEvents,
-      { type: "wave", index: waveIndex + 1 },
-    ]);
-	}
+    if (events[events.length - 1].type === "turn") {
+      setWaveIndex(waveIndex + 1);
+      setEvents((prevEvents) => [
+        ...prevEvents,
+        { type: "wave", index: waveIndex + 1 },
+      ]);
+    }
   };
 
   return (
     <div className="Mainpage">
       <h1>編集ページ</h1>
-
+			<form method="post">
       <div className="teamName">
-        <h3>漏瑚対策</h3>
+        <input 漏瑚対策/>
       </div>
 
       <div className="teamMember">
@@ -168,11 +170,13 @@ function Edit() {
 
       <div className="memo">
         <p className="contents">memo</p>
-
-        <p>{message}</p>
+        <textarea
+					defaultValue={message}
+				></textarea>
       </div>
-
-      <Link to="/main">保存</Link>
+			
+      <Link to="/main"><button type="submit">保存</button></Link>
+			</form>
     </div>
   );
 }

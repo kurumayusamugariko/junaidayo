@@ -49,6 +49,10 @@ Button.newWave:hover {
   text-align: left;
   background-color: rgb(223, 212, 201);
 }
+
+.toMain {
+  margin-top: 15px;
+}
 .turnNumber {
   width: 7%;
   padding: 10px;
@@ -66,4 +70,16 @@ select {
   width: 180px;
   margin: auto;
   display: inline-block;
+}
+select {
+  width: 180px;
+  margin: auto;
+  display: inline-block;
+}
+textarea{
+	max-width: 760px;
+	width: 100%;
+	min-height: 50px;
+	font-size: 16px;
+	padding: 15px;
 }
