@@ -54,6 +54,7 @@ function Edit() {
       setTurnIndex(0); // turnIndexを初期状態にリセット
     }
   };
+	console.log(events);//コマンドの中身を確認
 
   return (
     <div className="Mainpage">
