@@ -49,9 +49,6 @@ Button.newWave:hover {
   text-align: left;
   background-color: rgb(223, 212, 201);
 }
-.toMain {
-  margin-top: 15px;
-}
 .turnNumber {
   width: 7%;
   padding: 10px;
