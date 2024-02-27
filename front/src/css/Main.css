@@ -6,10 +6,7 @@
   border-radius: 15px;
 }
 .teamMember {
-  display: inline-block;
-  text-align: center;
   margin-left: 8%;
-  margin-top: 20px;
 }
 .teamMember img {
   padding: 10px 30px;

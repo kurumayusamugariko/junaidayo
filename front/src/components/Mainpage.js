@@ -16,7 +16,9 @@ function Mainpage() {
     <div className="Mainpage">
       <div className="teamName">
         <h3>漏瑚対策</h3>
+      </div>
 
+      <div className="toEdit">
         <Link to="/edit">
           <Button className="toEdit" variant="contained">
             編集
@@ -51,7 +53,9 @@ function Mainpage() {
         <p>{message}</p>
       </div>
 
-      <Link to="/">戻る</Link>
+      <Link to="/" className="link">
+        <Button className="toMain">戻る</Button>
+      </Link>
     </div>
   );
 }
