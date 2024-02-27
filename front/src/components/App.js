@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TeamList from "./TeamList";
 import Mainpage from "./Mainpage";
 import Edit from "./Edit";
+import NewTurn from "./NewTurn";
 
 //マテリアルUI
 import Button from "@mui/material/Button";

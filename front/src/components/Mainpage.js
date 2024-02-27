@@ -44,14 +44,6 @@ function Mainpage() {
             </div>
           </div>
         </div>
-
-        <Button className="newTurn" variant="contained">
-          + NEW TURN
-        </Button>
-        <br></br>
-        <Button className="newWave" variant="contained">
-          + NEW WAVE
-        </Button>
       </div>
 
       <div className="memo">

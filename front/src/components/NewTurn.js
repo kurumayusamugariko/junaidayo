@@ -10,7 +10,7 @@ const NewTurn = () => {
 
   return (
     <div>
-      <button onClick={handleButtonClick()}>コンポーネントを作成する</button>
+      <button onClick={()=>handleButtonClick()}>コンポーネントを作成する</button>
       {showComponent && <TestComponent />}
     </div>
   );
