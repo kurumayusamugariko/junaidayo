@@ -20,10 +20,7 @@ Mypage.jsはログイン後の画面を想定
 http://localhost:3000/Myapp
 ログイン画面を作れなければ、App.jsにてメインページを作る。
 
-npm install react-router-dom
-npm install dotenv
-
-
+firebaseログイン
 // import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 // <Router>
 // <Link className="link" to="/Auth" element={<AuthComponent />}>
@@ -59,12 +56,9 @@ npm install dotenv
 //            };
 // export default CreacteButton;
 
+.gitignoreと.env
 
-
-                    <ul>
-                      {turn.map((wave) => (
-                        <li className="wave" key={wave.id}>
-                          wave{wave.id}
-                        </li>
-                      ))}
-                    </ul>
+パッケージ一覧
+npm install react-router-dom
+npm install dotenv
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react

@@ -19,7 +19,7 @@ function Mainpage() {
       </div>
 
 			<div className="toEdit">
-				<Link to="/edit">編集</Link>
+				<Link to="/edit"><Button>編集</Button></Link>
 			</div>
 
       <div className="teamMember">
@@ -50,7 +50,7 @@ function Mainpage() {
         <p>{message}</p>
       </div>
 
-      <Link to="/">戻る</Link>
+      <Link to="/" className="link"><Button className="toMain">戻る</Button></Link>
     </div>
   );
 }

@@ -60,3 +60,14 @@ Button.newWave:hover {
   text-align: left;
   background-color: rgb(223, 212, 201);
 }
+
+.teamName h3 {
+  display: inline-block;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.toEdit {
+  display: inline-block;
+  left: 250px;
+}
