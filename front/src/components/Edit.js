@@ -104,7 +104,7 @@ function Edit() {
       <h1>編集ページ</h1>
       <form method="post">
         <div className="teamName">
-          <label for="teamName">チーム名 :</label>
+          <label htmlFor="teamName">チーム名 :</label>
           <input type="text" id="teamName" defaultValue="漏瑚対策" />
         </div>
 
@@ -152,14 +152,14 @@ function Edit() {
                 {events.map((item, index) => (
                   <li key={index}>
                     {item.type === "wave" ? (
-                      <li className="wave" key={item.index}>
+                      <p className="wave">
                         wave{item.index + 1}
 												<DeleteIcon className="deleteIconW" onClick={() => handleDelete(index)}>Delete</DeleteIcon>
-                      </li>
+                      </p>
                     ) : (
-                      <div className="turn" key={item.index}>
-                        <div className="turnNumber" key={item.index}>{item.index + 1}</div>
-                        <select className="turn" key={item.index}>
+                      <div className="turn">
+                        <div className="turnNumber">{item.index + 1}</div>
+                        <select className="turn">
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
