@@ -4,6 +4,7 @@ import "../css/Edit.css";
 
 import Button from "@mui/material/Button";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Edit() {
   //画像関係
@@ -48,24 +49,18 @@ function Edit() {
   const [waveIndex, setWaveIndex] = useState(0);
   const [turnIndex, setTurnIndex] = useState(0);
 
-  const newTurn = () => {
-    setTurnIndex(turnIndex + 1);
-    setEvents((prevEvents) => [
-      ...prevEvents,
-      { type: "turn", index: turnIndex + 1 },
-    ]);
-  };
-
-  const newWave = () => {
-    if (events[events.length - 1].type === "turn") {
-      setWaveIndex(waveIndex + 1);
-      setEvents((prevEvents) => [
-        ...prevEvents,
-        { type: "wave", index: waveIndex + 1 },
-      ]);
-    }
-  };
-
+	const newTurn = () => {
+		const turnCount = events.filter(item => item.type === 'turn').length;
+		setEvents([...events, {type: 'turn', index: turnCount, number: turnCount + 1}]);
+	};
+	
+	const newWave = () => {
+		const lastEvent = events[events.length - 1];
+		if (lastEvent && lastEvent.type === 'turn'){
+			const waveCount = events.filter(item => item.type === 'wave').length;
+			setEvents([...events, {type: 'wave', index: waveCount, number: waveCount + 1}]);
+		}
+	};
   const reset = () => {
     if (window.confirm("本当にリセットしますか？")) {
       setEvents([
@@ -76,8 +71,33 @@ function Edit() {
       setTurnIndex(0); // turnIndexを初期状態にリセット
     }
   };
+
+	const handleDelete = (index) => {
+		const newItems = [...events];
+		newItems.splice(index, 1);
+	
+		let waveCount = 0;
+		let turnCount = 0;
+	
+		setEvents(newItems.map((item, index) => {
+			if (item.type === 'wave') {
+				waveCount += 1;
+				return {...item, index: waveCount - 1, number: waveCount};
+			} else if (item.type === 'turn') {
+				turnCount += 1;
+				return {...item, index: turnCount - 1, number: turnCount};
+			} else {
+				return item;
+			}
+		}));
+	};
+
   console.log("コマンドの中身"); //コマンドの中身を確認
 	console.log(events);
+
+	useEffect(() => {
+		console.log(events);
+	}, [events]);
 
   return (
     <div className="Mainpage">
@@ -96,7 +116,7 @@ function Edit() {
                 src={imageSrcs.member1}
                 onClick={() => handleImageUpload("member1")}
               />
-              <p>乙骨</p>
+              <input type="text" id="member" defaultValue="東堂 幻" />
             </li>
             <li className="m2">
               <img
@@ -104,7 +124,7 @@ function Edit() {
                 src={imageSrcs.member2}
                 onClick={() => handleImageUpload("member2")}
               />
-              <p>乙骨</p>
+              <input type="text" id="member" defaultValue="東堂 幻" />
             </li>
             <li className="m3">
               <img
@@ -112,7 +132,7 @@ function Edit() {
                 src={imageSrcs.member3}
                 onClick={() => handleImageUpload("member3")}
               />
-              <p>乙骨</p>
+              <input type="text" id="member" defaultValue="東堂 幻" />
             </li>
             <li className="m4">
               <img
@@ -120,7 +140,7 @@ function Edit() {
                 src={imageSrcs.member4}
                 onClick={() => handleImageUpload("member4")}
               />
-              <p>乙骨</p>
+              <input type="text" id="member" defaultValue="東堂 幻" />
             </li>
           </ul>
         </div>
@@ -134,11 +154,12 @@ function Edit() {
                     {item.type === "wave" ? (
                       <li className="wave" key={item.index}>
                         wave{item.index + 1}
+												<DeleteIcon className="deleteIconW" onClick={() => handleDelete(index)}>Delete</DeleteIcon>
                       </li>
                     ) : (
-                      <div className="turn">
-                        <div className="turnNumber">{item.index + 1}</div>
-                        <select className="turn">
+                      <div className="turn" key={item.index}>
+                        <div className="turnNumber" key={item.index}>{item.index + 1}</div>
+                        <select className="turn" key={item.index}>
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -222,6 +243,7 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
+												<DeleteIcon className="deleteIcon" onClick={() => handleDelete(index)}>Delete</DeleteIcon>
                       </div>
                     )}
                   </li>

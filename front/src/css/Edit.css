@@ -5,30 +5,31 @@
   background-color: rgb(255, 253, 245);
   border-radius: 15px;
 }
-.teamName, .teamName input{
-	padding: 5px;
-	font-size: 20px;
-	font-weight: bold;
-	margin-left: 10px;
+.teamName,
+.teamName input {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
-.teamMember{
+.teamMember {
   margin-left: 80px;
-	height: 200px;
-	position: relative;
+  height: 200px;
+  position: relative;
 }
-.teamMember li{
-	float: left;
+.teamMember li {
+  float: left;
+  width: 25%;
 }
 .teamMember img {
   padding: 10px 30px;
   max-width: 120px;
 }
-.teamMember p{
-	margin: 0 auto;
-	max-width: 120px;
+input#member {
+  margin: 0 auto;
+  max-width: 100px;
 }
-
 .wave {
   width: 788px;
   padding: 5px;
@@ -36,6 +37,16 @@
   font-weight: bold;
   display: block;
   height: auto;
+	position: relative;
+}
+.deleteIconW{
+  position: absolute;
+	top: 5px;
+	right: -24px;
+	color: rgb(131, 123, 123,0.3);
+}
+.deleteIconW:hover{
+	color: rgb(131, 123, 123);
 }
 .command-container Button {
   margin: auto;
@@ -82,11 +93,22 @@ Button.reset:hover {
   float: left;
   background-color: rgb(223, 212, 201);
 }
-.turn{
-	font-weight: bold;
-	font-size: 16px;
-	text-align: center;
+.turn {
+  position: relative;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
 }
+.deleteIcon {
+  position: absolute;
+  top: 10px;
+  float: right;
+  color: rgb(131, 123, 123,0.3);
+}
+.deleteIcon:hover {
+  color: rgb(131, 123, 123);
+}
+
 ul {
   margin: 0 auto;
   padding: 0;
@@ -99,16 +121,11 @@ select {
   margin: auto;
   display: inline-block;
 }
-select {
-  width: 180px;
-  margin: auto;
-  display: inline-block;
-}
-textarea{
-	max-width: 760px;
-	min-width: 400px;
-	width: 100%;
-	min-height: 50px;
-	font-size: 16px;
-	padding: 15px;
+textarea {
+  max-width: 760px;
+  min-width: 400px;
+  width: 100%;
+  min-height: 50px;
+  font-size: 16px;
+  padding: 15px;
 }
