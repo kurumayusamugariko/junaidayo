@@ -1,0 +1,73 @@
+.Mainpage {
+  margin: 0 auto;
+  padding: 10px;
+  width: 800px;
+  background-color: rgb(255, 253, 245);
+  border-radius: 15px;
+}
+.teamMember {
+  margin-left: 8%;
+}
+.teamMember img {
+  padding: 10px 30px;
+  max-width: 120px;
+}
+.wave {
+  padding: 5px;
+  background-color: rgb(209, 164, 164);
+  font-weight: bold;
+}
+.turn{
+	height: 42px;
+}
+.t {
+  width: 120px;
+  float: left;
+  padding: 10px 30px;
+}
+.turnNumber {
+  width: 7%;
+  padding: 10px;
+  float: left;
+  background-color: rgb(223, 212, 201);
+}
+
+.command-container Button {
+  margin: auto;
+  width: 100%;
+}
+Button.newTurn {
+  background-color: rgb(41, 36, 30);
+}
+Button.newTurn:hover {
+  background-color: rgb(41, 36, 30, 0.5);
+}
+Button.newWave {
+  background-color: rgb(97, 94, 91);
+}
+Button.newWave:hover {
+  background-color: rgb(97, 94, 91, 0.5);
+}
+.memo {
+  margin-top: 10px;
+  border: solid 1px;
+  border-radius: 3px;
+  background-color: rgb(255, 254, 253);
+}
+.contents {
+  margin: 0px;
+  padding: 10px;
+  text-align: left;
+  background-color: rgb(223, 212, 201);
+}
+
+.teamName h3 {
+  display: inline-block;
+  text-align: center;
+  margin-left: 8%;
+}
+
+.toEdit {
+  display: inline-block;
+  left: 250px;
+}
