@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import "../css/Edit.css";
 
 import Button from "@mui/material/Button";
@@ -7,6 +7,7 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Edit() {
+  const navigate = useNavigate();
   //画像関係
   const [imageSrcs, setImageSrcs] = useState({
     member1: "okkotu.jpg",
@@ -32,14 +33,8 @@ function Edit() {
   };
 	console.log("メンバー画像");
 	console.log(imageSrcs);
+  const [memo, setMemo] = useState(""); // memo ステートを追加
 
-  //sqlから表示「じゃがいも」
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    fetch("/sql")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
 
   //コマンド関係
   const [events, setEvents] = useState([
@@ -49,18 +44,27 @@ function Edit() {
   const [waveIndex, setWaveIndex] = useState(0);
   const [turnIndex, setTurnIndex] = useState(0);
 
-	const newTurn = () => {
-		const turnCount = events.filter(item => item.type === 'turn').length;
-		setEvents([...events, {type: 'turn', index: turnCount, number: turnCount + 1}]);
-	};
-	
-	const newWave = () => {
-		const lastEvent = events[events.length - 1];
-		if (lastEvent && lastEvent.type === 'turn'){
-			const waveCount = events.filter(item => item.type === 'wave').length;
-			setEvents([...events, {type: 'wave', index: waveCount, number: waveCount + 1}]);
-		}
-	};
+  
+  const newTurn = () => {
+    const turnCount = events.filter(item => item.type === 'turn').length;
+    setEvents([...events, { type: 'turn', index: turnCount, number: turnCount + 1 }]);
+  };
+  
+  const newWave = () => {
+    const lastEvent = events[events.length - 1];
+    let waveCount = events.filter(item => item.type === 'wave').length;
+  
+    // 新しい wave イベントを追加する前に、既に存在する wave イベントの数を取得
+    if (lastEvent && lastEvent.type === 'turn') {
+      waveCount = events.filter(item => item.type === 'wave').length;
+    }
+  
+    console.log('Adding new wave event:', { type: 'wave', index: waveCount, number: waveCount + 1 });
+  
+    setEvents([...events, { type: 'wave', index: waveCount, number: waveCount + 1 }]);
+  };
+  
+  
   const reset = () => {
     if (window.confirm("本当にリセットしますか？")) {
       setEvents([
@@ -92,9 +96,91 @@ function Edit() {
 		}));
 	};
 
+  const [selectedOptions, setSelectedOptions] = useState(Array(events.length).fill('firstOption'));
+
+  // handleSelectChange 関数を変更
+  const handleSelectChange = (index, selectedValue) => {
+    setSelectedOptions((prevOptions) => {
+      const newOptions = [...prevOptions];
+      // indexが現在のnewOptionsの長さ以下の場合、そのまま更新、それ以外は新たに追加
+      if (index < newOptions.length) {
+        newOptions[index] = selectedValue;
+      } else {
+        newOptions.push(selectedValue);
+      }
+      return newOptions;
+    });
+  };
+  
+
+// 保存ボタンがクリックされた時の処理
+// handleSave 関数の変更
+const handleSave = async (e) => {
+  e.preventDefault();
+
+  try {
+    // チーム名を取得
+    const teamName = document.getElementById('teamName').value;
+
+    // メンバー情報を取得
+    const members = Array.from(document.querySelectorAll('.teamMember li')).map(member => ({
+      name: member.querySelector('input').value,
+      imageSrc: member.querySelector('img').src,
+    }));
+
+    // メモを取得
+    const memo = document.querySelector('.memo textarea').value;
+
+    // コマンド情報を取得
+    const commands = events.map((event, index) => {
+      if (event.type === 'wave') {
+        return { type: 'wave', index: event.index, number: event.number };
+      } else if (event.type === 'turn') {
+        return {
+          type: 'turn',
+          index: event.index,
+          number: event.number,
+          text1: selectedOptions[index * 4] || '',   // デフォルトで空文字列を設定
+          text2: selectedOptions[index * 4 + 1] || '',
+          text3: selectedOptions[index * 4 + 2] || '',
+          text4: selectedOptions[index * 4 + 3] || '',
+        };
+      }
+    });
+
+    console.log("データベースに送信するデータ:", { teamName, members, commands, memo });
+
+    // サーバーにデータを送信
+    const response = await fetch('/teams', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ teamName, members, commands, memo }),
+    });
+
+    // サーバーからのレスポンスをログに出力
+    if (response.ok) {
+      console.log('データが保存されました。');
+      // 画像パスの更新など、必要な処理を追加
+
+      // /main にリダイレクト
+      navigate("/main");
+    } else {
+      console.error('データの保存に失敗しました。', response.status, response.statusText);
+      // エラーレスポンスの内容をログに出力
+      const errorData = await response.json();
+      console.error('エラーレスポンス:', errorData);
+    }
+  } catch (error) {
+    console.error('エラー:', error);
+  }
+};
+
   console.log("コマンドの中身"); //コマンドの中身を確認
 	console.log(events);
 
+  
 	useEffect(() => {
 		console.log(events);
 	}, [events]);
@@ -102,7 +188,7 @@ function Edit() {
   return (
     <div className="Mainpage">
       <h1>編集ページ</h1>
-      <form method="post">
+      <form onSubmit={handleSave}>
         <div className="teamName">
           <label htmlFor="teamName">チーム名 :</label>
           <input type="text" id="teamName" defaultValue="漏瑚対策" />
@@ -158,8 +244,11 @@ function Edit() {
                       </p>
                     ) : (
                       <div className="turn">
-                        <div className="turnNumber">{item.index + 1}</div>
-                        <select className="turn">
+                      <div className="turnNumber">{item.index + 1}</div>
+                      <select
+                        className={`turn turn${item.index}`}
+                        onChange={(e) => handleSelectChange(index, e.target.value)}
+                      >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -180,7 +269,10 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                       <select
+                        className={`turn turn${item.index}`}
+                        onChange={(e) => handleSelectChange(index, e.target.value)}
+                      >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -201,7 +293,10 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                       <select
+                        className={`turn turn${item.index}`}
+                        onChange={(e) => handleSelectChange(index, e.target.value)}
+                      >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -222,7 +317,10 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                       <select
+                        className={`turn turn${item.index}`}
+                        onChange={(e) => handleSelectChange(index, e.target.value)}
+                      >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -268,13 +366,13 @@ function Edit() {
 
         <div className="memo">
           <p className="contents">memo</p>
-          <textarea defaultValue={message}></textarea>
+          <textarea value={memo} onChange={(e) => setMemo(e.target.value)}></textarea>
         </div>
 
         <Link to="/main">
-          <Button type="submit" className="toMain">
-            保存
-          </Button>
+        <Button type="button" className="toMain" onClick={handleSave}>
+        保存
+      </Button>
         </Link>
       </form>
     </div>
