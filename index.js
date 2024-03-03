@@ -1,4 +1,5 @@
 const env = require('dotenv').config();
+console.log(env);
 
 const express = require('express');
 const mysql = require('mysql2');
