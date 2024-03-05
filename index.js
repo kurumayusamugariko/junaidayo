@@ -49,28 +49,12 @@ app.get("/sql", (req,res)=>{
 	)
 });
 
-app.post('/team', async (req, res) => {
-  try {
-    const { teamName, members, commands, memberImages, memo } = req.body;
+app.use(express.json()); // to support JSON-encoded bodies
 
-    // チーム情報を保存
-    const [team] = await db.promise().query('INSERT INTO Team (teamName, memo) VALUES (?, ?)', [teamName, memo]);
-
-    // メンバー情報を保存
-    for (let i = 1; i <= 4; i++) {
-      await db.promise().query('INSERT INTO Member (team_id, member_name, member_image) VALUES (?, ?, ?)', [team.insertId, members[i], memberImages[`member${i}`]]);
-    }
-
-    // コマンド情報を保存
-    for (const command of commands) {
-      await db.promise().query('INSERT INTO Command (team_id, type, command_index, number) VALUES (?, ?, ?, ?)', [team.insertId, command.type, command.command_index, command.number || null]);
-    }
-
-    res.status(200).send('Team data saved successfully');
-  } catch (error) {
-    console.error('Server-side error:', error);
-    res.status(500).send('Internal Server Error');
-  }
+app.post('/edit', (req, res) => {
+  console.log(req.body); // {inputValue: ..., textareaValue: ..., imageSrcs: ..., events: ...}
+  res.json({message: "Data received!"});
+	res.send('POST request to the homepage');
 });
 
 app.listen(port, () => {
