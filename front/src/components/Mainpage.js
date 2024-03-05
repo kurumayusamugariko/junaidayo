@@ -12,6 +12,25 @@ function Mainpage() {
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
+
+	  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/edit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ /* ここに送信するデータを記述 */ }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  }, []);
   return (
     <div className="Mainpage">
       <div className="teamName">

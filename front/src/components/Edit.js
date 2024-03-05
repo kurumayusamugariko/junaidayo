@@ -163,6 +163,28 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
+  const data = {
+    inputValue: inputValue,
+    textareaValue: textareaValue,
+    imageSrcs: imageSrcs,
+    events: events,
+  };
+
+  fetch("http://localhost:3001/edit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
   const handleSave = () => {
     const data = {
       inputValue,
@@ -180,28 +202,6 @@ function Edit() {
         console.error("Error saving data", error);
       });
   };
-	const data = {
-		inputValue: inputValue,
-		textareaValue: textareaValue,
-		imageSrcs: imageSrcs,
-		events: events
-	};
-	console.log(data);
-	
-	fetch('http://localhost:3000/edit', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	})
-	.then(response => response.json())
-	.then(data => {
-		console.log('Success:', data);
-	})
-	.catch((error) => {
-		console.error('Error:', error);
-	});
 
   return (
     <div className="Mainpage">
@@ -437,7 +437,7 @@ function Edit() {
         <div className="memo">
           <p className="contents">memo</p>
           <textarea
-						defaultValue={textareaValue}
+            defaultValue={textareaValue}
             value={textareaValue}
             onChange={handleTextareaChange}
           ></textarea>
