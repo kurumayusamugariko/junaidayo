@@ -1,12 +1,42 @@
 import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "../css/Edit.css";
+import axios from "axios";
 
 import Button from "@mui/material/Button";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Edit() {
+  const [inputValue, setInputValue] = useState({
+    teamName: "漏瑚対策",
+    1: "1人目",
+    2: "2人目",
+    3: "3人目",
+    4: "4人目",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setInputValue((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  //sqlから表示「じゃがいも」
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    fetch("/sql")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
+  const [textareaValue, setTextareaValue] = useState(message);
+
+  useEffect(() => {
+    setTextareaValue(message);
+  }, [message]);
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
+
   //画像関係
   const [imageSrcs, setImageSrcs] = useState({
     member1: "okkotu.jpg",
@@ -30,37 +60,65 @@ function Edit() {
     };
     fileInput.click();
   };
-	console.log("メンバー画像");
-	console.log(imageSrcs);
-
-  //sqlから表示「じゃがいも」
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    fetch("/sql")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
 
   //コマンド関係
   const [events, setEvents] = useState([
     { type: "wave", index: 0 },
-    { type: "turn", index: 0 },
+    {
+      type: "turn",
+      index: 0,
+      turn1: "1←技A",
+      turn2: "1←技A",
+      turn3: "1←技A",
+      turn4: "1←技A",
+    },
   ]);
   const [waveIndex, setWaveIndex] = useState(0);
   const [turnIndex, setTurnIndex] = useState(0);
 
-	const newTurn = () => {
-		const turnCount = events.filter(item => item.type === 'turn').length;
-		setEvents([...events, {type: 'turn', index: turnCount, number: turnCount + 1}]);
-	};
-	
-	const newWave = () => {
-		const lastEvent = events[events.length - 1];
-		if (lastEvent && lastEvent.type === 'turn'){
-			const waveCount = events.filter(item => item.type === 'wave').length;
-			setEvents([...events, {type: 'wave', index: waveCount, number: waveCount + 1}]);
-		}
-	};
+  const newTurn = () => {
+    const turnCount = events.filter((item) => item.type === "turn").length;
+    setEvents([
+      ...events,
+      {
+        type: "turn",
+        index: turnCount,
+        number: turnCount + 1,
+        turn1: "1←技A",
+        turn2: "1←技A",
+        turn3: "1←技A",
+        turn4: "1←技A",
+      },
+    ]);
+  };
+
+  function handleSelectChange(event) {
+    const selectedOptionText =
+      event.target.options[event.target.selectedIndex].text;
+    const turnProperty = event.target.name; // 'turn1', 'turn2', 'turn3', 'turn4'
+    const turnIndex = event.target.getAttribute("data-index");
+
+    setEvents((prevEvents) =>
+      prevEvents.map((event, index) => {
+        if (event.type === "turn" && index === Number(turnIndex)) {
+          return { ...event, [turnProperty]: selectedOptionText };
+        } else {
+          return event;
+        }
+      })
+    );
+  }
+
+  const newWave = () => {
+    const lastEvent = events[events.length - 1];
+    if (lastEvent && lastEvent.type === "turn") {
+      const waveCount = events.filter((item) => item.type === "wave").length;
+      setEvents([
+        ...events,
+        { type: "wave", index: waveCount, number: waveCount + 1 },
+      ]);
+    }
+  };
   const reset = () => {
     if (window.confirm("本当にリセットしますか？")) {
       setEvents([
@@ -72,32 +130,60 @@ function Edit() {
     }
   };
 
-	const handleDelete = (index) => {
-		const newItems = [...events];
-		newItems.splice(index, 1);
-	
-		let waveCount = 0;
-		let turnCount = 0;
-	
-		setEvents(newItems.map((item, index) => {
-			if (item.type === 'wave') {
-				waveCount += 1;
-				return {...item, index: waveCount - 1, number: waveCount};
-			} else if (item.type === 'turn') {
-				turnCount += 1;
-				return {...item, index: turnCount - 1, number: turnCount};
-			} else {
-				return item;
-			}
-		}));
-	};
+  const handleDelete = (index) => {
+    const newItems = [...events];
+    newItems.splice(index, 1);
 
-  console.log("コマンドの中身"); //コマンドの中身を確認
-	console.log(events);
+    let waveCount = 0;
+    let turnCount = 0;
 
-	useEffect(() => {
-		console.log(events);
-	}, [events]);
+    setEvents(
+      newItems.map((item, index) => {
+        if (item.type === "wave") {
+          waveCount += 1;
+          return { ...item, index: waveCount - 1, number: waveCount };
+        } else if (item.type === "turn") {
+          turnCount += 1;
+          return { ...item, index: turnCount - 1, number: turnCount };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
+
+  useEffect(() => {
+    console.log("チーム編成");
+    console.log(inputValue);
+    console.log("コマンドの中身");
+    console.log(events);
+    console.log("メンバー画像");
+    console.log(imageSrcs);
+    console.log("メモ");
+    console.log(textareaValue);
+  }, [events, imageSrcs, inputValue, textareaValue]);
+
+  const handleSave = () => {
+		fetch("http://localhost:3001/edit", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				inputValue: inputValue,
+				textareaValue: textareaValue,
+				imageSrcs: imageSrcs,
+				events: events,
+			}),
+		})
+		.then((response) => response.json())
+		.then((data) => {
+			console.log("Success:", data);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+  };
 
   return (
     <div className="Mainpage">
@@ -105,7 +191,13 @@ function Edit() {
       <form method="post">
         <div className="teamName">
           <label htmlFor="teamName">チーム名 :</label>
-          <input type="text" id="teamName" defaultValue="漏瑚対策" />
+          <input
+            type="text"
+            id="teamName"
+            name="teamName"
+            value={inputValue.teamName}
+            onChange={handleInputChange}
+          />
         </div>
 
         <div className="teamMember">
@@ -116,7 +208,14 @@ function Edit() {
                 src={imageSrcs.member1}
                 onClick={() => handleImageUpload("member1")}
               />
-              <input type="text" id="member" defaultValue="東堂 幻" />
+              <input
+                type="text"
+                id="member"
+                name="1"
+                defaultValue={inputValue[1]}
+                value={inputValue.member1}
+                onChange={handleInputChange}
+              />
             </li>
             <li className="m2">
               <img
@@ -124,7 +223,14 @@ function Edit() {
                 src={imageSrcs.member2}
                 onClick={() => handleImageUpload("member2")}
               />
-              <input type="text" id="member" defaultValue="東堂 幻" />
+              <input
+                type="text"
+                id="member"
+                name="2"
+                defaultValue={inputValue[2]}
+                value={inputValue.member2}
+                onChange={handleInputChange}
+              />
             </li>
             <li className="m3">
               <img
@@ -132,7 +238,14 @@ function Edit() {
                 src={imageSrcs.member3}
                 onClick={() => handleImageUpload("member3")}
               />
-              <input type="text" id="member" defaultValue="東堂 幻" />
+              <input
+                type="text"
+                id="member"
+                name="3"
+                defaultValue={inputValue[3]}
+                value={inputValue.member3}
+                onChange={handleInputChange}
+              />
             </li>
             <li className="m4">
               <img
@@ -140,7 +253,14 @@ function Edit() {
                 src={imageSrcs.member4}
                 onClick={() => handleImageUpload("member4")}
               />
-              <input type="text" id="member" defaultValue="東堂 幻" />
+              <input
+                type="text"
+                id="member"
+                name="4"
+                defaultValue={inputValue[4]}
+                value={inputValue.member4}
+                onChange={handleInputChange}
+              />
             </li>
           </ul>
         </div>
@@ -154,12 +274,22 @@ function Edit() {
                     {item.type === "wave" ? (
                       <p className="wave">
                         wave{item.index + 1}
-												<DeleteIcon className="deleteIconW" onClick={() => handleDelete(index)}>Delete</DeleteIcon>
+                        <DeleteIcon
+                          className="deleteIconW"
+                          onClick={() => handleDelete(index)}
+                        >
+                          Delete
+                        </DeleteIcon>
                       </p>
                     ) : (
                       <div className="turn">
                         <div className="turnNumber">{item.index + 1}</div>
-                        <select className="turn">
+                        <select
+                          className="turn1"
+                          name="turn1"
+                          data-index={index}
+                          onChange={handleSelectChange}
+                        >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -180,7 +310,12 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                        <select
+                          className="turn2"
+                          name="turn2"
+                          data-index={index}
+                          onChange={handleSelectChange}
+                        >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -201,7 +336,12 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                        <select
+                          className="turn3"
+                          name="turn3"
+                          data-index={index}
+                          onChange={handleSelectChange}
+                        >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -222,7 +362,12 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-                        <select className="turn">
+                        <select
+                          className="turn4"
+                          name="turn4"
+                          data-index={index}
+                          onChange={handleSelectChange}
+                        >
                           <option value="firstOption">1←技A</option>
                           <option value="secondOption">1←技B</option>
                           <option value="3rdOption">1←技C</option>
@@ -243,7 +388,12 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
-												<DeleteIcon className="deleteIcon" onClick={() => handleDelete(index)}>Delete</DeleteIcon>
+                        <DeleteIcon
+                          className="deleteIcon"
+                          onClick={() => handleDelete(index)}
+                        >
+                          Delete
+                        </DeleteIcon>
                       </div>
                     )}
                   </li>
@@ -268,11 +418,15 @@ function Edit() {
 
         <div className="memo">
           <p className="contents">memo</p>
-          <textarea defaultValue={message}></textarea>
+          <textarea
+            defaultValue={textareaValue}
+            value={textareaValue}
+            onChange={handleTextareaChange}
+          ></textarea>
         </div>
 
         <Link to="/main">
-          <Button type="submit" className="toMain">
+          <Button type="submit" className="toMain" onClick={handleSave}>
             保存
           </Button>
         </Link>
