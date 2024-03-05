@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding: 10px;
   width: 800px;
-  background-color: rgb(255, 253, 245);
+  background: color #ebffeb;
   border-radius: 15px;
 }
 .teamName,
@@ -31,9 +31,9 @@ input#member {
   max-width: 100px;
 }
 .wave {
-  width: 788px;
+  width: 775px;
   padding: 5px;
-  background-color: rgb(209, 164, 164);
+  background-color:#ff7070;
   font-weight: bold;
   display: block;
   height: auto;
@@ -53,23 +53,23 @@ input#member {
   width: 100%;
 }
 Button.newTurn {
-  background-color: rgb(41, 36, 30);
+  background-color: #96a2b0;
   margin-top: 42px;
 }
 Button.newTurn:hover {
-  background-color: rgb(41, 36, 30, 0.5);
+  background-color:  rgb(131, 123, 123);
 }
 Button.newWave {
   background-color: rgb(97, 94, 91);
 }
 Button.newWave:hover {
-  background-color: rgb(97, 94, 91, 0.5);
+  background-color:  rgb(131, 123, 123);
 }
 Button.reset {
   background-color: rgb(207, 53, 25);
 }
 Button.reset:hover {
-  background-color: rgb(97, 94, 91, 0.5);
+  background-color:  rgb(131, 123, 123);
 }
 .memo {
   margin-top: 10px;
@@ -87,19 +87,22 @@ Button.reset:hover {
 .toMain {
   margin-top: 15px;
 }
+
 .turnNumber {
-  width: 7%;
+  width: 4.5%;
   padding: 10px;
   float: left;
   background-color: rgb(223, 212, 201);
 }
-.turn,.turn1,.turn2,.turn3,.turn4 {
+
+.turn {
   position: relative;
 	height: 41px;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
 }
+
 .deleteIcon {
   position: absolute;
   top: 10px;

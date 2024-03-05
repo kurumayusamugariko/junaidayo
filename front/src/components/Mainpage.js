@@ -21,10 +21,10 @@ function Mainpage() {
         setData(data);
         if (data.teams && data.teams.length >= 0) {
           setTeamName(sqldata.teams[0].teamName);
-					setMemo(sqldata.teams[0].textareaValue);
+          setMemo(sqldata.teams[0].textareaValue);
         }
         if (data.members && data.members.length >= 0) {
-          setMembers(sqldata.members[0]);
+          setMembers(sqldata.members);
         }
         if (data.commands && data.commands.length >= 0) {
           setCommands(sqldata.commands);
@@ -39,17 +39,24 @@ function Mainpage() {
         <h3>{teamName}</h3>
       </div>
 
-      <div className="toEdit">
-        <Link to="/edit">
-          <Button>編集</Button>
-        </Link>
-      </div>
+      <Link to="/edit">
+        <Button className="toEdit" variant="contained">
+          編集
+        </Button>
+      </Link>
 
       <div className="teamMember">
-        <img className="m1" alt="１" src={members.imageSrc}></img>
-        <img className="m2" alt="２" src={members.imageSrc}></img>
-        <img className="m3" alt="３" src={members.imageSrc}></img>
-        <img className="m4" alt="４" src={members.imageSrc}></img>
+        <img className="m1" alt="１" src={members[0].imageSrc}></img>
+        <img className="m2" alt="２" src={members[1].imageSrc}></img>
+        <img className="m3" alt="３" src={members[2].imageSrc}></img>
+        <img className="m4" alt="４" src={members[3].imageSrc}></img>
+      </div>
+
+      <div className="Names">
+        <p className="name">{members[0].memberName}</p>
+        <p className="name">{members[1].memberName}</p>
+        <p className="name">{members[2].memberName}</p>
+        <p className="name">{members[3].memberName}</p>
       </div>
 
       <div className="command-container">

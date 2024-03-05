@@ -5,12 +5,22 @@
   background-color: rgb(255, 253, 245);
   border-radius: 15px;
 }
-.teamMember {
+.teamMembers {
   margin-left: 8%;
 }
-.teamMember img {
+.teamMembers img {
   padding: 10px 30px;
   max-width: 120px;
+}
+.Names {
+  text-align: right;
+}
+.name {
+  display: inline-block;
+  font-size: 20px;
+  padding-right: 70px;
+  padding-left: 45px;
+  font-weight: bold;
 }
 .wave {
   padding: 5px;

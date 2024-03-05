@@ -2,22 +2,22 @@ import React, { useState, useEffect } from "react";
 import "../css/App.css";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import TeamList from "./TeamList";
+
 import Mainpage from "./Mainpage";
 import Edit from "./Edit";
-
-import Button from "@mui/material/Button";
+//import Button from "@mui/material/Button";
 
 function App() {
   return (
     <div className="App">
       <h1>純愛だよ</h1>
-			<TeamList/>
+
       <Router>
-        <Link className="link" to="/main" element={<Mainpage />}><Button>メインページ</Button></Link>
+        
         <Routes>
+          <Route path="/" element={<Mainpage />} />
           <Route path="/main" element={<Mainpage />} />
-					<Route path="/edit" element={<Edit />} />
+          <Route path="/edit" element={<Edit />} />
         </Routes>
       </Router>
     </div>
