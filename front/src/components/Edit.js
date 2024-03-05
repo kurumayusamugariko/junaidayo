@@ -437,6 +437,7 @@ function Edit() {
         <div className="memo">
           <p className="contents">memo</p>
           <textarea
+						defaultValue={textareaValue}
             value={textareaValue}
             onChange={handleTextareaChange}
           ></textarea>

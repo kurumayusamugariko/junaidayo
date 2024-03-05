@@ -53,8 +53,7 @@ app.use(express.json()); // to support JSON-encoded bodies
 
 app.post('/edit', (req, res) => {
   console.log(req.body); // {inputValue: ..., textareaValue: ..., imageSrcs: ..., events: ...}
-  res.json({message: "Data received!"});
-	res.send('POST request to the homepage');
+  res.json(req.body);
 });
 
 app.listen(port, () => {
