@@ -93,8 +93,9 @@ Button.reset:hover {
   float: left;
   background-color: rgb(223, 212, 201);
 }
-.turn {
+.turn,.turn1,.turn2,.turn3,.turn4 {
   position: relative;
+	height: 41px;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
