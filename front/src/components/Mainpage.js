@@ -8,7 +8,12 @@ import Button from "@mui/material/Button";
 function Mainpage() {
   const [data, setData] = useState(null);
   const [teamName, setTeamName] = useState("");
-  const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState({
+		0: { memberName: "", imageSrc: "" },
+		1: { memberName: "", imageSrc: "" },
+		2: { memberName: "", imageSrc: "" },
+		3: { memberName: "", imageSrc: "" },
+	});
   const [commands, setCommands] = useState([]);
   const [memo, setMemo] = useState("");
 
