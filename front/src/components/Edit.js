@@ -81,20 +81,30 @@ function Edit() {
   const [turnIndex, setTurnIndex] = useState(0);
 
   const newTurn = () => {
-    const turnCount = events.filter((item) => item.type === "turn").length;
-    setEvents([
-      ...events,
-      {
-        type: "turn",
-        index: turnCount,
-        number: turnCount + 1,
-        turn1: "1←技A",
-        turn2: "1←技A",
-        turn3: "1←技A",
-        turn4: "1←技A",
-      },
-    ]);
+    // 現在のWave数
+    const waveCount = events.filter((item) => item.type === "wave").length;
+    
+    // 新しいTurnが始まるかどうか
+    const isNewTurn = waveCount > 0 ? true : events.length === 0 || events[events.length - 1].type === "turn";
+    
+    // 新しいTurnが始まる場合のみ追加
+    if (isNewTurn) {
+      setEvents((prevEvents) => [
+        ...prevEvents,
+        {
+          type: "turn",
+          index: events.filter((item) => item.type === "turn").length, // ターン数のカウント
+          number: events.filter((item) => item.type === "turn").length + 1,
+          turn1: "1←技A",
+          turn2: "1←技A",
+          turn3: "1←技A",
+          turn4: "1←技A",
+        },
+      ]);
+    }
   };
+  
+  
 
   const handleSelectChange = (event) => {
     const selectedOptionText =
@@ -116,21 +126,23 @@ function Edit() {
   const newWave = () => {
     const lastEvent = events[events.length - 1];
     if (lastEvent && lastEvent.type === "turn") {
-      const waveCount = events.filter((item) => (item.type === "wave").length-1);
-      
       // 新しいWaveが始まる前に既存のWaveの最後のターンがあれば削除
-      if (events.length > 1 && events[events.length - 2].type === "turn") {
+      if (events.length > 0 && events[events.length - 1].type === "turn") {
         const newItems = [...events];
-        newItems.splice(newItems.length - 2, 1);
+        newItems.pop(); // 最後の要素を削除
         setEvents(newItems);
       }
+  
+      // 新しいWaveが始まるときにwaveCountを正しく計算
+      const waveCount = events.filter((item) => item.type === "wave").length + 1;
+  
       setEvents([
         ...events,
-       // { type: "wave", index: waveCount, number: waveCount + 1 },
-        { type: "wave", index: waveCount, number: waveCount + 1 },
+        { type: "wave", index: waveCount - 1, number: waveCount },
       ]);
     }
   };
+  
   
 
   const reset = () => {
@@ -147,12 +159,12 @@ function Edit() {
   const handleDelete = (index) => {
     const newItems = [...events];
     newItems.splice(index, 1);
-
+  
     let waveCount = 0;
     let turnCount = 0;
-
+  
     setEvents(
-      newItems.map((item, index) => {
+      newItems.map((item) => {
         if (item.type === "wave") {
           waveCount += 1;
           return { ...item, index: waveCount - 1, number: waveCount };
@@ -165,6 +177,7 @@ function Edit() {
       })
     );
   };
+  
 
   useEffect(() => {
     console.log("チーム編成");
@@ -181,8 +194,13 @@ function Edit() {
 // 保存成功後にMainpage.jsにリダイレクト
 //const history = useHistory();
 const navigate = useNavigate(); // useNavigateを使ってナビゲーションを管理
+const [currentWaveNumber, setCurrentWaveNumber] = useState(0);
+const [currentTurnNumber, setCurrentTurnNumber] = useState(0);
 
   const handleSave = () => {
+    if (events.length > 0 && events[events.length - 1].type === "wave") {
+      setCurrentWaveNumber((prev) => prev + 1);
+    }
     const data = {
       teamName: inputValue.teamName,
       members: [
@@ -207,6 +225,8 @@ const navigate = useNavigate(); // useNavigateを使ってナビゲーション�
         }
       }),
       memo: textareaValue,
+      wave_number: currentWaveNumber,
+      turn_number: currentTurnNumber,
     };
   
     
@@ -214,6 +234,7 @@ const navigate = useNavigate(); // useNavigateを使ってナビゲーション�
   .then((response) => {
     console.log("Data saved", data);
     //history.push("/main"); // リダイレクト
+    setCurrentTurnNumber((prev) => prev + 1);
     navigate("/main"); // リダイレクト
   })
   .catch((error) => {

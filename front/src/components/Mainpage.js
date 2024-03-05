@@ -19,22 +19,25 @@ function Mainpage() {
       id: 1,
       team_id: 1,
       wave_number: 0,
-      turn_number: 1,
+      turn_number: 0,
       command_text1: "1←技A",
       command_text2: "1←技A",
       command_text3: "1←技A",
       command_text4: "1←技A",
+      type: "wave", // ここにtypeプロパティを追加
     },
   ]);
+  
   console.log("commandData");
   console.log(commandData);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("/main/latest") // エンドポイントを修正
+    fetch("/main/latest")
       .then((res) => res.json())
       .then((data) => {
-        setTeamData(data.teamData.team_name || {});
+        setTeamData(data.teamData.team_name || "");
+        setTeamData(data.teamData || {});
         setMemberData(data.memberData || []);
         setCommandData(data.commandData || []);
         setTeamData(data.teamData.memo ? data.teamData.memo : "");
@@ -43,6 +46,7 @@ function Mainpage() {
         console.error('Error fetching data:', error);
       });
   }, []);
+  
 
   return (
     <div className="Mainpage">
@@ -63,23 +67,24 @@ function Mainpage() {
       </div>
 
       <div className="command-container">
-        {commandData.map((command) => (
-          <div key={command.id} className="command">
-            {command.type === "wave" ? (
-            <div className="wave">wave{command.wave_number + 1}</div>
-            ):(
-            <div className="turn-container">
-              <div className="turn">
-                <div className="turnNumber">{command.turn_number}</div>
-                <div className="first t">{command.command_text1}</div>
-                <div className="second t">{command.command_text2}</div>
-                <div className="third t">{command.command_text3}</div>
-                <div className="forth t">{command.command_text4}</div>
-              </div>
-            </div>
-            )}
-          </div>
-        ))}
+      {commandData.map((command) => (
+  <div key={command.id} className="command">
+    {command.type === "wave" ? (
+      <div className="wave">wave{command.wave_number + 1}</div>
+    ) : (
+      <div className="turn-container">
+        <div className="turn">
+          <div className="turnNumber">{command.turn_number}</div>
+          <div className="first t">{command.command_text1}</div>
+          <div className="second t">{command.command_text2}</div>
+          <div className="third t">{command.command_text3}</div>
+          <div className="forth t">{command.command_text4}</div>
+        </div>
+      </div>
+    )}
+  </div>
+))}
+
       </div>
 
       <div className="memo">
