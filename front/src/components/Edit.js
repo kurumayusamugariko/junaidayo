@@ -163,44 +163,26 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
-  const data = {
-    inputValue: inputValue,
-    textareaValue: textareaValue,
-    imageSrcs: imageSrcs,
-    events: events,
-  };
-
-  fetch("http://localhost:3001/edit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-
   const handleSave = () => {
-    const data = {
-      inputValue,
-      textareaValue,
-      imageSrcs,
-      events,
-    };
-
-    axios
-      .post("/api/save", data)
-      .then((response) => {
-        console.log("Data saved");
-      })
-      .catch((error) => {
-        console.error("Error saving data", error);
-      });
+		fetch("http://localhost:3001/edit", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				inputValue: inputValue,
+				textareaValue: textareaValue,
+				imageSrcs: imageSrcs,
+				events: events,
+			}),
+		})
+		.then((response) => response.json())
+		.then((data) => {
+			console.log("Success:", data);
+		})
+		.catch((error) => {
+			console.error("Error:", error);
+		});
   };
 
   return (
