@@ -16,17 +16,23 @@ function Mainpage() {
     <div className="Mainpage">
       <div className="teamName">
         <h3>漏瑚対策</h3>
+        <Link to="/edit">
+        <Button className="toEdit" variant="contained">編集</Button>
+        </Link>
       </div>
 
-			<div className="toEdit">
-				<Link to="/edit"><Button>編集</Button></Link>
-			</div>
-
-      <div className="teamMember">
+      <div className="teamMembers">
         <img className="m1" alt="１" src="okkotu.jpg"></img>
         <img className="m2" alt="２" src="okkotu.jpg"></img>
         <img className="m3" alt="３" src="okkotu.jpg"></img>
         <img className="m4" alt="４" src="okkotu.jpg"></img>
+      </div>
+
+      <div className="Names">
+        <p className="name">乙骨 幻</p>
+        <p className="name">乙骨 幻</p>
+        <p className="name">乙骨 幻</p>
+        <p className="name">乙骨 幻</p>
       </div>
 
       <div className="command-container">

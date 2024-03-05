@@ -101,7 +101,7 @@ function Edit() {
 
   return (
     <div className="Mainpage">
-      <h1>編集ページ</h1>
+      
       <form method="post">
         <div className="teamName">
           <label htmlFor="teamName">チーム名 :</label>
