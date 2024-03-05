@@ -1,4 +1,14 @@
-実行は、cd my-app をしてから npm start
+アプリの実行
+React-------
+junaidayo $ cd front
+front $ npm start
+
+localhost:3000
+
+Node--------
+junaidyo $ npm start
+
+localhost:3001
 
 componentsフォルダは自分で作成
 コンポーネントを作るときはこのフォルダに入れる
@@ -10,7 +20,46 @@ Mypage.jsはログイン後の画面を想定
 http://localhost:3000/Myapp
 ログイン画面を作れなければ、App.jsにてメインページを作る。
 
-routerを使おうとしてnpm install react-router-domしたら
-firebaseの中身が消えたり、その他のエラーが出た。
-App.jsのimport { collection, getDocs } from "firebase/firestore";
-をしたら直った。怖すぎ。
+firebaseログイン
+// import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+// <Router>
+// <Link className="link" to="/Auth" element={<AuthComponent />}>
+// 	<button>ログイン</button>
+// </Link>
+// {/* <AuthComponent/> */}
+// <Link to="/mypage" element={<Mypage />}>
+// 	<button>マイページ</button>
+// </Link>
+
+// <Routes>
+// 	<Route path="/Auth" element={<AuthComponent />} />
+// 	<Route path="/mypage" element={<Mypage />} />
+// </Routes>
+// </Router>
+
+//2/26 am3:00 はつね
+//ReactDomの時代はもう終わったらしい
+//作ったファイルTestComponent.js,NewTurn.js,CreateButton.js
+//createRootを使う
+//TestComponentで返したいnewTurnの中身、
+//NewTurn.jsでボタンをクリックした際に生成されるようにしたけど、
+//それをedit.jsにどう表示させるのかがわからないままです
+// const CreateButton =()=>{
+//             return(
+//                 <div>
+//                 <NewTurn />
+//                 <Button className="newTurn" variant="contained">
+//                 + NEW TURN
+//               </Button>
+//               </div> 
+//             );
+//            };
+// export default CreacteButton;
+
+.gitignoreと.env
+
+パッケージ一覧
+npm install react-router-dom
+npm install dotenv
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+npm install axios

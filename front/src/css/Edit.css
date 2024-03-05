@@ -1,0 +1,132 @@
+.Mainpage {
+  margin: 0 auto;
+  padding: 10px;
+  width: 800px;
+  background-color: rgb(255, 253, 245);
+  border-radius: 15px;
+}
+.teamName,
+.teamName input {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.teamMember {
+  margin-left: 80px;
+  height: 200px;
+  position: relative;
+}
+.teamMember li {
+  float: left;
+  width: 25%;
+}
+.teamMember img {
+  padding: 10px 30px;
+  max-width: 120px;
+}
+input#member {
+  margin: 0 auto;
+  max-width: 100px;
+}
+.wave {
+  width: 788px;
+  padding: 5px;
+  background-color: rgb(209, 164, 164);
+  font-weight: bold;
+  display: block;
+  height: auto;
+	position: relative;
+}
+.deleteIconW{
+  position: absolute;
+	top: 5px;
+	right: -24px;
+	color: rgb(131, 123, 123,0.3);
+}
+.deleteIconW:hover{
+	color: rgb(131, 123, 123);
+}
+.command-container Button {
+  margin: auto;
+  width: 100%;
+}
+Button.newTurn {
+  background-color: rgb(41, 36, 30);
+  margin-top: 42px;
+}
+Button.newTurn:hover {
+  background-color: rgb(41, 36, 30, 0.5);
+}
+Button.newWave {
+  background-color: rgb(97, 94, 91);
+}
+Button.newWave:hover {
+  background-color: rgb(97, 94, 91, 0.5);
+}
+Button.reset {
+  background-color: rgb(207, 53, 25);
+}
+Button.reset:hover {
+  background-color: rgb(97, 94, 91, 0.5);
+}
+.memo {
+  margin-top: 10px;
+  border: solid 1px;
+  border-radius: 3px;
+  background-color: rgb(255, 254, 253);
+}
+.contents {
+  margin: 0px;
+  padding: 10px;
+  text-align: left;
+  background-color: rgb(223, 212, 201);
+}
+
+.toMain {
+  margin-top: 15px;
+}
+.turnNumber {
+  width: 7%;
+  padding: 10px;
+  float: left;
+  background-color: rgb(223, 212, 201);
+}
+.turn,.turn1,.turn2,.turn3,.turn4 {
+  position: relative;
+	height: 41px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+.deleteIcon {
+  position: absolute;
+  top: 10px;
+  float: right;
+  color: rgb(131, 123, 123,0.3);
+}
+.deleteIcon:hover {
+  color: rgb(131, 123, 123);
+}
+
+ul {
+  margin: 0 auto;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+select {
+  width: 180px;
+  margin: auto;
+  display: inline-block;
+}
+textarea {
+  max-width: 760px;
+  min-width: 400px;
+  width: 100%;
+  min-height: 50px;
+  font-size: 16px;
+  padding: 15px;
+}
