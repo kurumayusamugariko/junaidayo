@@ -21,18 +21,12 @@ function Edit() {
     setInputValue((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  //sqlから表示「じゃがいも」
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    fetch("/sql")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-  const [textareaValue, setTextareaValue] = useState(message);
+  //sqlから表示
+  const [textareaValue, setTextareaValue] = useState("");
 
   useEffect(() => {
-    setTextareaValue(message);
-  }, [message]);
+    setTextareaValue(textareaValue);
+  }, [textareaValue]);
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
@@ -419,7 +413,7 @@ function Edit() {
         <div className="memo">
           <p className="contents">memo</p>
           <textarea
-            defaultValue={textareaValue}
+            defaultValue="memo"
             value={textareaValue}
             onChange={handleTextareaChange}
           ></textarea>
