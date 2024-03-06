@@ -158,7 +158,7 @@ function Edit() {
   }, [events, imageSrcs, inputValue, textareaValue]);
 
   const handleSave = () => {
-		fetch("http://localhost:3001/edit", {
+		fetch("http://node:8080/edit", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -279,7 +279,7 @@ function Edit() {
                       <div className="turn">
                         <div className="turnNumber">{item.index + 1}</div>
                         <select
-                          className="turn1"
+                          className="turn"
                           name="turn1"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -305,7 +305,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn2"
+                          className="turn"
                           name="turn2"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -331,7 +331,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn3"
+                          className="turn"
                           name="turn3"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -357,7 +357,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn4"
+                          className="turn"
                           name="turn4"
                           data-index={index}
                           onChange={handleSelectChange}
