@@ -12,14 +12,13 @@
   padding: 10px 30px;
   max-width: 120px;
 }
-.Names {
-  text-align: right;
-}
+
 .name {
+	width: 179.2px;
   display: inline-block;
-  font-size: 20px;
-  padding-right: 70px;
-  padding-left: 45px;
+  font-size:min(1.3vw,20px);
+  /* padding-right: 60px;
+  padding-left: 52px; */
   font-weight: bold;
 }
 .wave {
@@ -46,6 +45,12 @@
   margin: auto;
   width: 100%;
 }
+
+.toEdit{
+	position: relative;
+	top: -65px;
+}
+
 Button.newTurn {
   background-color: rgb(41, 36, 30);
 }
@@ -63,6 +68,7 @@ Button.newWave:hover {
   border: solid 1px;
   border-radius: 3px;
   background-color: rgb(255, 254, 253);
+	margin-bottom: 20px;
 }
 .contents {
   margin: 0px;

@@ -37,6 +37,9 @@ function Mainpage() {
       })
       .catch((error) => console.error("Error:", error));
   }, []);
+	if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="Mainpage">
@@ -50,14 +53,11 @@ function Mainpage() {
         </Button>
       </Link>
 
-      <div className="teamMember">
+      <div className="teamMembers">
         <img className="m1" alt="１" src={members[0].imageSrc}></img>
         <img className="m2" alt="２" src={members[1].imageSrc}></img>
         <img className="m3" alt="３" src={members[2].imageSrc}></img>
         <img className="m4" alt="４" src={members[3].imageSrc}></img>
-      </div>
-
-      <div className="Names">
         <p className="name">{members[0].memberName}</p>
         <p className="name">{members[1].memberName}</p>
         <p className="name">{members[2].memberName}</p>
@@ -91,9 +91,9 @@ function Mainpage() {
         <p>{memo}</p>
       </div>
 
-      <Link to="/" className="link">
+      {/* <Link to="/" className="link">
         <Button className="toMain">戻る</Button>
-      </Link>
+      </Link> */}
     </div>
   );
 }

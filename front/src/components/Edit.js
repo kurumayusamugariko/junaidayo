@@ -33,10 +33,10 @@ function Edit() {
 
   //画像関係
   const [imageSrcs, setImageSrcs] = useState({
-    member1: "okkotu.jpg",
-    member2: "okkotu.jpg",
-    member3: "okkotu.jpg",
-    member4: "okkotu.jpg",
+    member1: "kobusi.png",//kobusi.png
+    member2: "inu.png",//inu.png
+    member3: "kugi.png",//kugi.png
+    member4: "kakuseiki.png",//kakuseiki.png
   });
 
   const handleImageUpload = (member) => {
@@ -279,7 +279,7 @@ function Edit() {
                       <div className="turn">
                         <div className="turnNumber">{item.index + 1}</div>
                         <select
-                          className="turn1"
+                          className="turn"
                           name="turn1"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -305,7 +305,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn2"
+                          className="turn"
                           name="turn2"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -331,7 +331,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn3"
+                          className="turn"
                           name="turn3"
                           data-index={index}
                           onChange={handleSelectChange}
@@ -357,7 +357,7 @@ function Edit() {
                           <option value="16thOption">4←必</option>
                         </select>
                         <select
-                          className="turn4"
+                          className="turn"
                           name="turn4"
                           data-index={index}
                           onChange={handleSelectChange}
