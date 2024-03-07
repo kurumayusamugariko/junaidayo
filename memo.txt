@@ -75,3 +75,5 @@ npm install cors
 npm i -g vercel
 vercel login
 vercel --prod
+
+node v21.7.0
