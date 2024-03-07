@@ -70,3 +70,8 @@ npm install cors
 //#b7b5e4
 //#847979
 //#322e18
+
+
+うまくいかな過ぎて、結局rootにした。
+noneイメージを消す
+docker rmi $(docker images -f "dangling=true" -q)
