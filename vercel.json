@@ -13,15 +13,15 @@
     },
     {
 			"src": "/(.*).js",
-			"dest": "/front/build/$1.js"
+			"dest": "/build/$1.js"
 		},
 		{
 			"src": "/(.*).css",
-			"dest": "/front/build/$1.css"
+			"dest": "build/$1.css"
 		},
 		{
 			"src": "/(.*).html",
-			"dest": "/front/build/$1.html"
+			"dest": "build/$1.html"
 		},
 		{
 			"src": "/(.*).(png|jpg)",
