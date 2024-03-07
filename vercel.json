@@ -29,7 +29,7 @@
 		},
 		{
 			"src": "/",
-			"dest": "/front/build/index.html"
+			"dest": "/build/index.html"
 		}
   ]
 }
