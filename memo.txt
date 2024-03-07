@@ -79,3 +79,67 @@ vercel --prod
 node v21.7.0
 git の管理下から外す
 git rm --cached ./golden-attic-416503-a5992dd53682.json
+
+root password
+mysql -u root -ppassword
+
+kurumayu samugariko
+mysql -u kurumayu -psamugariko
+
+sudo service mysql start
+sudo service mysql stop
+
+insert into items()
+
+net start mysql57
+
+CREATE TABLE Team (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  teamName VARCHAR(255),
+  textareaValue TEXT
+);
+
+CREATE TABLE Members (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  teamId INT,
+  memberName VARCHAR(255),
+  imageSrc VARCHAR(255),
+  FOREIGN KEY (teamId) REFERENCES Team(id)
+);
+
+CREATE TABLE Commands (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  teamId INT,
+  type VARCHAR(255),
+  eventIndex INT,
+  turn1 VARCHAR(255),
+  turn2 VARCHAR(255),
+  turn3 VARCHAR(255),
+  turn4 VARCHAR(255),
+  FOREIGN KEY (teamId) REFERENCES Team(id)
+);
+
+drop table Commands;
+drop table Members;
+drop table Team;
+
+google
+インスタンスID　junaipanda
+rootのpass junaidayo
+
+quickstart-user
+okkotupaisen
+
+golden-attic-416503:us-central1:junaipanda
+
+gcloud builds submit --tag gcr.io/golden-attic-416503/junaidayo
+gcloud run deploy junaidayo --image gcr.io/golden-attic-416503/junaidayo --platform managed
+
+
+その問題を解決するために、シェルスクリプトを作成してそのコマンドをラップすることをお勧めします。これにより、コマンドを簡単に再利用できます。
+
+以下に、そのためのシンプルなシェルスクリプトを示します：
+
+このスクリプトをbuild.shという名前のファイルに保存し、実行可能にします：
+
+これで、ビルドを実行するためには./build.shを実行するだけです。

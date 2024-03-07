@@ -157,8 +157,10 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
+	const API_URL = process.env.API_URL || "http://localhost:3001/edit";
+
   const handleSave = () => {
-		fetch("http://localhost:3001/edit", {
+		fetch(`${API_URL}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

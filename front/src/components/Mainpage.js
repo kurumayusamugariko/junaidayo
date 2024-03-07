@@ -9,11 +9,11 @@ function Mainpage() {
   const [data, setData] = useState(null);
   const [teamName, setTeamName] = useState("");
   const [members, setMembers] = useState({
-		0: { memberName: "", imageSrc: "" },
-		1: { memberName: "", imageSrc: "" },
-		2: { memberName: "", imageSrc: "" },
-		3: { memberName: "", imageSrc: "" },
-	});
+    0: { memberName: "", imageSrc: "" },
+    1: { memberName: "", imageSrc: "" },
+    2: { memberName: "", imageSrc: "" },
+    3: { memberName: "", imageSrc: "" },
+  });
   const [commands, setCommands] = useState([]);
   const [memo, setMemo] = useState("");
 
@@ -37,9 +37,19 @@ function Mainpage() {
       })
       .catch((error) => console.error("Error:", error));
   }, []);
+	
 	if (!data) {
-    return <div>Loading...</div>;
-  }
+		return (
+			<div>
+				<div>Loading...</div>
+				<Link to="/edit">
+					<Button className="toEdit" variant="contained">
+						編集
+					</Button>
+				</Link>
+			</div>
+		);
+	}
 
   return (
     <div className="Mainpage">
