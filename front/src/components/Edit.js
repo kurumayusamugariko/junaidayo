@@ -147,6 +147,17 @@ function Edit() {
   };
 
   useEffect(() => {
+		async function fetchData() {
+			try {
+				const response = await fetch('/data');
+				const data = await response.json();
+				console.log(data);
+			} catch (error) {
+				console.error('Error:', error);
+			}
+		}
+		fetchData();
+
     console.log("チーム編成");
     console.log(inputValue);
     console.log("コマンドの中身");
@@ -158,7 +169,7 @@ function Edit() {
   }, [events, imageSrcs, inputValue, textareaValue]);
 
   const handleSave = () => {
-		fetch("http://node:8080/edit", {
+		fetch("http://172.20.0.3/edit", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
