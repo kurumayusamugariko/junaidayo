@@ -31,8 +31,5 @@
 			"src": "/",
 			"dest": "/front/build/index.html"
 		}
-  ],
-	"env": {
-    "DATABASE_URL": "@database_url"
-  }
+  ]
 }
