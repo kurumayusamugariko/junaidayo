@@ -77,3 +77,5 @@ vercel login
 vercel --prod
 
 node v21.7.0
+git の管理下から外す
+git rm --cached ./golden-attic-416503-a5992dd53682.json

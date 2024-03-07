@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "golden-attic-416503",
+  "private_key_id": "a5992dd536826d61665cfff40095aabadd0832c8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCb+JOiRQp/kc3G\nlrvLZp9zA8K97CZu2ro5gpUGe/gktDKF7aj7t1WcTHgpqSGeGXpuoLyhNj7mHm1c\nV9sX7nEFsnOKqKAF9mcBlJO2KXqNxK2ffnJ9Z5Nw1Zvr8pV6K4uLSKncWdkbj6ye\nB3OlQgJznpU5OU2cuaBGDrbiAXWzXsdYyZR977pPcrtfDoh36vSrfMqWp+Ry1lgE\nubqqIYdTiS0u/Dk7/NR26Lyc1x/e2/geRDEMa+xhO53RhdsdUK/tRNia++CxxVsM\nYbUIPN57woyPBjnqraw4LMEMQNmv82aE3m30pGoPlAKCryzZUzDei/qG0PR//58P\nzii7fmo9AgMBAAECggEAHbcgOXw54dAfikRRhxEIM9t1kMWbFOerLyXHyrJ3tlZ2\ngbmjxkFJmDuhcR59/ycPgmAxT+2L0j/dygga/9Y3xkQXa0VxJ3Gock6iTcRdSwE7\nqvVmTqobFxY7XJqdC+eb8G9pnUeo621WD82PpN6MpQaDm6FlPgTHmlFXWnu4tvF9\nhcYzgHe0n+ZSpl52UWJZmWrWM4WyhKFesWqPCgnyRCCJEaxz5L7UWQPWcTN+2Mls\nf3eRuBFrRWfrQtqEYfaBDLbl36zcsxyOHwFm6hHEpDQ/hn4MfMFWfBLj8eaTOEaY\n2fa4j5/fGztjkqxWYj6S5nGGzAXNhL08fYiAft7g6QKBgQDQ/UgcjmscFd24d8Z5\nh/Kcd8+DE14tj5ZrtlQ5YfqGvCFACu6whwZu9K27E5mOjP52w4zxnh798gIklItp\nT8oBzdsegAfyZv80dkDK1hM0b6wAI0saDOYvtboJ1xlfaXhDPtdeas7LjOd0iDPn\nL6ojIilbitevfZaS/QBGSmWinwKBgQC/DjcZPT2Syti96tOBY1jaMgcXE9X+rq6x\nptIUURzJG+EyhMEwmgG7lVXgQk0wnzzmVWy3N3PHDUcn6Fi7momcoRMmwl1ub6dU\neygNL1HA41nYREBAKZpQPDe/rfzud/qaI2LnOPY+sq6MIcRdMC5hp3alwm4a2B4l\nJz7v8hLBowKBgAT5gnXrjfElNBnn//l0mvnOgEoGc/9xo4r81BRpmKUMZV445GWf\nUS/i8x+437bc9FGvZfN6aBJzaEmmn4rqM0zHsaeQNKA4g2qkRfaOEfb1kYqPTIJa\nPEB2eu8xB5GV2R8Ap++/axy9ReUoONQP9mTPs1xSeb/bpXHqQ89ohfLRAoGAcGfO\npvzO4zSQ/HvSYIew2P8iCMPU3Xisszyw0N9ADlpmzjAo8Y1Kg7DCy6R2garOS73q\nrojjhzMasDIVMpsjZ5GlEOK90aHDUwL6d3dlpBSe4YyWOKnBbn9fVVjqPOs9973m\nDKAI0K6T30Jmo2UbhLzgI3oXCZgpdDZ44vcLbf0CgYBJ+oVRg91WNUemgchP18Hv\nW488WL1X7Cc1F/BhpIgX7G1mUNartaym9HPf11CLd9cwzhYlrbJFyZfkxR3Etf2C\n0y0Pu/cTsrTH7lCm8PF9nXCYjZfo0O0QTeX9UUbF5RjwkoAU9dL/pCmEhMG+FKwh\n1gnXe7SD5Pow0iKFt4KFog==\n-----END PRIVATE KEY-----\n",
+  "client_email": "quickstart-service-account@golden-attic-416503.iam.gserviceaccount.com",
+  "client_id": "108116310540888218504",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/quickstart-service-account%40golden-attic-416503.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

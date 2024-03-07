@@ -20,6 +20,10 @@ const db = mysql.createPool({
   database: env.parsed.DB_DATABASE,
 
   charset: "utf8mb4",
+
+	// ssl: {
+	// 	ca: process.env.GOOGLE_APPLICATION_CREDENTIALS
+	// }
 });
 
 app.get("/", (req, res) => {
