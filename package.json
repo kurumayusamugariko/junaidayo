@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-		"dev": "node -r dotenv/config index.js",
+    "dev": "node -r dotenv/config index.js",
     "devStart": "nodemon back/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@google-cloud/secret-manager": "^5.1.0",
     "@google-cloud/storage": "^7.7.0",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
