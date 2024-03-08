@@ -4,7 +4,7 @@ WORKDIR /app
 COPY front/package*.json ./
 RUN npm install
 COPY front/ ./
-ENV API_URL=https://junaidayo-vm2tzccgea-uc.a.run.app/edit
+ENV API_URL=https://junaidayo-vm2tzccgea-uc.a.run.app/api/edit
 RUN npm run build
 
 # バックエンドを実行するためのステージ
@@ -16,7 +16,7 @@ COPY --from=build /app/build ./front/build
 COPY . .
 
 # Google Cloud SQLとの接続を設定するための環境変数
-ENV DB_HOST=127.0.0.1
+ENV DB_HOST=34.173.0.93
 ENV INSTANCE_CONNECTION_NAME=golden-attic-416503:us-central1:junaipanda
 ENV DB_USER=quickstart-user
 ENV DB_PASS=okkotupaisen

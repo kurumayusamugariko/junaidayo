@@ -157,7 +157,7 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
-	const API_URL = process.env.API_URL || "http://localhost:3001/edit";
+	const API_URL = process.env.API_URL || "http://localhost:3001/api/edit";
 
   const handleSave = () => {
 		fetch(`${API_URL}`, {

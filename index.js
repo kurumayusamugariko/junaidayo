@@ -12,19 +12,10 @@ app.use(express.json());
 app.use(express.static('front/build'));
 
 const db = mysql.createPool({
-  host: env.parsed.DB_HOST,
-
-  user: env.parsed.DB_USERNAME,
-
-  password: env.parsed.DB_PASSWORD,
-
-  database: env.parsed.DB_DATABASE,
-
-  charset: "utf8mb4",
-
-	// ssl: {
-	// 	ca: process.env.GOOGLE_APPLICATION_CREDENTIALS
-	// }
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 });
 
 app.get("/", (req, res) => {
@@ -52,7 +43,7 @@ app.get("/data", async (req, res) => {
 
 // to support JSON-encoded bodies
 
-app.post("/edit", async (req, res) => {
+app.post("/api/edit", async (req, res) => {
   const data = req.body;
   console.log("ここだよ:", data);
   const teamData = {
