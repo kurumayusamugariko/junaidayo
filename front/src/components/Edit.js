@@ -157,7 +157,7 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
-	const API_URL = process.env.API_URL || "http://localhost:3001/api/edit";
+	const API_URL = process.env.API_URL || "https://junaidayo-vm2tzccgea-uc.a.run.app/api/edit";
 
   const handleSave = () => {
 		fetch(`${API_URL}`, {
