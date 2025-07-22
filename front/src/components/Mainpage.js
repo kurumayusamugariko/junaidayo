@@ -6,11 +6,11 @@ import "../css/Main.css";
 import Button from "@mui/material/Button";
 
 function Mainpage() {
-  //backendからのAPIメッセージを取得
+  const API_URL = process.env.REACT_APP_API_URL;
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api`)
+    fetch(`${API_URL}/api`)
       .then((res) => res.json())
       .then((data) => {
         setMessage(data.message);
@@ -30,7 +30,7 @@ function Mainpage() {
   const [memo, setMemo] = useState("");
 
   useEffect(() => {
-    fetch("/data")
+    fetch(`${API_URL}/data`)
       .then((response) => response.json())
       .then((data) => {
         const sqldata = data;
