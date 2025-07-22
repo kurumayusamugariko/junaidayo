@@ -66,7 +66,6 @@ function Mainpage() {
 
   return (
     <div className="Mainpage">
-      <p>APIからのメッセージ: {message}</p>
       <div className="teamName">
         <h3>{teamName}</h3>
       </div>
