@@ -143,3 +143,13 @@ gcloud run deploy junaidayo --image gcr.io/golden-attic-416503/junaidayo --platf
 このスクリプトをbuild.shという名前のファイルに保存し、実行可能にします：
 
 これで、ビルドを実行するためには./build.shを実行するだけです。
+
+
+just-oarlock-439716-s9
+gcr.io/PROJECT-ID/junaidayo-backend
+
+ビルド
+gcloud builds submit --tag gcr.io/just-oarlock-439716-s9/junaidayo-backend
+
+エンドポイント
+https://junaidayo-backend-148495603425.europe-west1.run.app

@@ -14,6 +14,7 @@ function Edit() {
     2: "2人目",
     3: "3人目",
     4: "4人目",
+    5: "5人目",
   });
 
   const handleInputChange = (event) => {
@@ -33,10 +34,11 @@ function Edit() {
 
   //画像関係
   const [imageSrcs, setImageSrcs] = useState({
-    member1: "kobusi.png",//kobusi.png
-    member2: "inu.png",//inu.png
-    member3: "kugi.png",//kugi.png
-    member4: "kakuseiki.png",//kakuseiki.png
+    member1: "kobusi.png",
+    member2: "inu.png",
+    member3: "kugi.png",
+    member4: "kakuseiki.png",
+    member5: "member5.png",
   });
 
   const handleImageUpload = (member) => {
@@ -65,6 +67,7 @@ function Edit() {
       turn2: "1←技A",
       turn3: "1←技A",
       turn4: "1←技A",
+      turn5: "1←技A",
     },
   ]);
   const [waveIndex, setWaveIndex] = useState(0);
@@ -82,6 +85,7 @@ function Edit() {
         turn2: "1←技A",
         turn3: "1←技A",
         turn4: "1←技A",
+        turn5: "1←技A",
       },
     ]);
   };
@@ -157,7 +161,7 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
-	const API_URL = process.env.API_URL || "https://junaidayo-vm2tzccgea-uc.a.run.app/api/edit";
+	const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSave = () => {
 		fetch(`${API_URL}`, {

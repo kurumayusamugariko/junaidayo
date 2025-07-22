@@ -1,7 +1,7 @@
 const env = require("dotenv").config();
+console.log(process.env.DB_USER, process.env.DB_PASS);
 const cors = require("cors");
-const bodyParser = require("body-parser");
-
+// const bodyParser = require("body-parser");
 const express = require("express");
 const mysql = require("mysql2");
 const app = express();
@@ -9,7 +9,6 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('front/build'));
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
@@ -27,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello World!" });
+  res.json({ message: "junaidayo!" });
 });
 
 app.get("/data", async (req, res) => {
