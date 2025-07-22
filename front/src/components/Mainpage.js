@@ -6,6 +6,19 @@ import "../css/Main.css";
 import Button from "@mui/material/Button";
 
 function Mainpage() {
+  //backendからのAPIメッセージを取得
+  const [apiMessage, setApiMessage] = useState("");
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/api`)
+      .then((res) => res.text())
+      .then((text) => {
+        console.log("APIから受け取った:", text);
+        setApiMessage(text);
+      })
+      .catch((err) => console.error("API取得エラー:", err));
+  }, []);
+
   const [data, setData] = useState(null);
   const [teamName, setTeamName] = useState("");
   const [members, setMembers] = useState({
@@ -37,22 +50,24 @@ function Mainpage() {
       })
       .catch((error) => console.error("Error:", error));
   }, []);
-	
-	if (!data) {
-		return (
-			<div>
-				<div>Loading...</div>
-				<Link to="/edit">
-					<Button className="toEdit" variant="contained">
-						編集
-					</Button>
-				</Link>
-			</div>
-		);
-	}
+
+  if (!data) {
+    return (
+      <div>
+        <p>APIからのメッセージ: {apiMessage}</p>
+        <div>Loading...</div>
+        <Link to="/edit">
+          <Button className="toEdit" variant="contained">
+            編集
+          </Button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="Mainpage">
+      <p>APIからのメッセージ: {apiMessage}</p>
       <div className="teamName">
         <h3>{teamName}</h3>
       </div>
