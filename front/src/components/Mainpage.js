@@ -7,16 +7,15 @@ import Button from "@mui/material/Button";
 
 function Mainpage() {
   //backendからのAPIメッセージを取得
-  const [apiMessage, setApiMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api`)
-      .then((res) => res.text())
-      .then((text) => {
-        console.log("APIから受け取った:", text);
-        setApiMessage(text);
+      .then((res) => res.json())
+      .then((data) => {
+        setMessage(data.message);
       })
-      .catch((err) => console.error("API取得エラー:", err));
+      .catch((err) => console.error(err));
   }, []);
 
   const [data, setData] = useState(null);
@@ -54,7 +53,7 @@ function Mainpage() {
   if (!data) {
     return (
       <div>
-        <p>APIからのメッセージ: {apiMessage}</p>
+        <p>APIからのメッセージ: {message}</p>
         <div>Loading...</div>
         <Link to="/edit">
           <Button className="toEdit" variant="contained">
@@ -67,7 +66,7 @@ function Mainpage() {
 
   return (
     <div className="Mainpage">
-      <p>APIからのメッセージ: {apiMessage}</p>
+      <p>APIからのメッセージ: {message}</p>
       <div className="teamName">
         <h3>{teamName}</h3>
       </div>
