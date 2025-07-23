@@ -177,7 +177,7 @@ function Edit() {
   const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSave = () => {
-    fetch(`${API_URL}`, {
+    fetch(`${API_URL}/api/edit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
