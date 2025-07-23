@@ -39,7 +39,7 @@ function Edit() {
     member2: "inu.png",
     member3: "kugi.png",
     member4: "kakuseiki.png",
-    member5: "member5.png",
+    member5: "okkotu.jpg",
   });
 
   useEffect(() => {
