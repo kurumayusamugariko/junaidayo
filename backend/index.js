@@ -62,7 +62,7 @@ app.post("/api/edit", async (req, res) => {
   let teamId = result[0].insertId;
 
   // Insert into Members table
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 5; i++) {
     let memberData = {
       teamId: teamId,
       memberName: data.inputValue[i.toString()],
@@ -84,6 +84,7 @@ app.post("/api/edit", async (req, res) => {
       turn2: event.turn2,
       turn3: event.turn3,
       turn4: event.turn4,
+      turn5: event.turn5,
     };
     sql = "INSERT INTO Commands SET ?";
     query = db.promise().query(sql, eventData);
