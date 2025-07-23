@@ -78,16 +78,16 @@ function Mainpage() {
       </Link>
 
       <div className="teamMembers">
-        <img className="m1" alt="１" src={members[0].imageSrc}></img>
-        <img className="m2" alt="２" src={members[1].imageSrc}></img>
-        <img className="m3" alt="３" src={members[2].imageSrc}></img>
-        <img className="m4" alt="４" src={members[3].imageSrc}></img>
-        <img className="m5" alt="５" src={members[4].imageSrc}></img>
-        <p className="name">{members[0].memberName}</p>
-        <p className="name">{members[1].memberName}</p>
-        <p className="name">{members[2].memberName}</p>
-        <p className="name">{members[3].memberName}</p>
-        <p className="name">{members[4].memberName}</p>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div key={i} className="member">
+            <img
+              className="memberImage"
+              alt={`メンバー${i + 1}`}
+              src={members[i].imageSrc}
+            />
+            <p className="memberName">{members[i].memberName}</p>
+          </div>
+        ))}
       </div>
 
       <div className="command-container">
@@ -99,7 +99,7 @@ function Mainpage() {
               return (
                 <div className="turn-container">
                   <div className="turn">
-                    <div className="turnNumber">{command.eventIndex + 1}</div>
+                    <div className="turnNumber">{command.eventIndex}</div>
                     <div className="first t">{command.turn1}</div>
                     <div className="second t">{command.turn2}</div>
                     <div className="third t">{command.turn3}</div>

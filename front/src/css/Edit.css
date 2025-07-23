@@ -1,7 +1,6 @@
 .Mainpage {
   margin: 0 auto;
   padding: 10px;
-  width: 800px;
   background: color #ebffeb;
   border-radius: 15px;
 }
@@ -14,21 +13,29 @@
 }
 
 .teamMember {
-  margin-left: 80px;
-  height: 200px;
+  margin: 0 3% 0 7%;
   position: relative;
 }
-.teamMember li {
-  float: left;
-  width: 25%;
+.imageRow,
+.nameRow {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
 }
-.teamMember img {
-  padding: 10px 30px;
-  max-width: 120px;
+
+.imageRow img {
+  max-height: 100px;
+  object-fit: cover;
+  cursor: pointer;
 }
-input#member {
-  margin: 0 auto;
-  max-width: 100px;
+
+.nameRow input {
+  width: 80px;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  text-align: center;
 }
 .wave {
   width: 775px;

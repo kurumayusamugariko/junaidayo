@@ -8,6 +8,7 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function Edit() {
+  const memberKeys = ["member1", "member2", "member3", "member4", "member5"];
   const [inputValue, setInputValue] = useState({
     teamName: "漏瑚対策",
     1: "1人目",
@@ -41,9 +42,21 @@ function Edit() {
     member5: "member5.png",
   });
 
+  useEffect(() => {
+    const saved = localStorage.getItem("imageSrcs");
+    if (saved) {
+      setImageSrcs(JSON.parse(saved));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("imageSrcs", JSON.stringify(imageSrcs));
+  }, [imageSrcs]);
+
   const handleImageUpload = (member) => {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
+    fileInput.accept = "image/*";
     fileInput.onchange = (e) => {
       const file = e.target.files[0];
       const reader = new FileReader();
@@ -122,9 +135,9 @@ function Edit() {
       setEvents([
         { type: "wave", index: 0 },
         { type: "turn", index: 0 },
-      ]); // eventsを初期状態にリセット
-      setWaveIndex(0); // waveIndexを初期状態にリセット
-      setTurnIndex(0); // turnIndexを初期状態にリセット
+      ]);
+      setWaveIndex(0);
+      setTurnIndex(0);
     }
   };
 
@@ -161,33 +174,32 @@ function Edit() {
     console.log(textareaValue);
   }, [events, imageSrcs, inputValue, textareaValue]);
 
-	const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSave = () => {
-		fetch(`${API_URL}`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				inputValue: inputValue,
-				textareaValue: textareaValue,
-				imageSrcs: imageSrcs,
-				events: events,
-			}),
-		})
-		.then((response) => response.json())
-		.then((data) => {
-			console.log("Success:", data);
-		})
-		.catch((error) => {
-			console.error("Error:", error);
-		});
+    fetch(`${API_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        inputValue: inputValue,
+        textareaValue: textareaValue,
+        imageSrcs: imageSrcs,
+        events: events,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
     <div className="Mainpage">
-      
       <form method="post">
         <div className="teamName">
           <label htmlFor="teamName">チーム名 :</label>
@@ -201,67 +213,34 @@ function Edit() {
         </div>
 
         <div className="teamMember">
-          <ul>
-            <li className="m1">
+          <ul className="imageRow">
+            {Object.entries(imageSrcs).map(([key, src]) => (
               <img
-                alt="member1"
-                src={imageSrcs.member1}
-                onClick={() => handleImageUpload("member1")}
+                key={key}
+                src={src}
+                alt={key}
+                onClick={() => handleImageUpload(key)}
+                style={{
+                  width: 100,
+                  height: 100,
+                  objectFit: "cover",
+                  margin: 8,
+                }}
               />
-              <input
-                type="text"
-                id="member"
-                name="1"
-                defaultValue={inputValue[1]}
-                value={inputValue.member1}
-                onChange={handleInputChange}
-              />
-            </li>
-            <li className="m2">
-              <img
-                alt="member2"
-                src={imageSrcs.member2}
-                onClick={() => handleImageUpload("member2")}
-              />
-              <input
-                type="text"
-                id="member"
-                name="2"
-                defaultValue={inputValue[2]}
-                value={inputValue.member2}
-                onChange={handleInputChange}
-              />
-            </li>
-            <li className="m3">
-              <img
-                alt="member3"
-                src={imageSrcs.member3}
-                onClick={() => handleImageUpload("member3")}
-              />
-              <input
-                type="text"
-                id="member"
-                name="3"
-                defaultValue={inputValue[3]}
-                value={inputValue.member3}
-                onChange={handleInputChange}
-              />
-            </li>
-            <li className="m4">
-              <img
-                alt="member4"
-                src={imageSrcs.member4}
-                onClick={() => handleImageUpload("member4")}
-              />
-              <input
-                type="text"
-                id="member"
-                name="4"
-                defaultValue={inputValue[4]}
-                value={inputValue.member4}
-                onChange={handleInputChange}
-              />
-            </li>
+            ))}
+          </ul>
+
+          <ul className="nameRow">
+            {memberKeys.map((key, index) => (
+              <li key={key}>
+                <input
+                  type="text"
+                  name={String(index + 1)}
+                  value={inputValue[key]}
+                  onChange={handleInputChange}
+                />
+              </li>
+            ))}
           </ul>
         </div>
 

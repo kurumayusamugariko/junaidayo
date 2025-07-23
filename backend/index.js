@@ -1,5 +1,5 @@
 const env = require("dotenv").config();
-console.log(process.env.DB_USER, process.env.DB_PASS);
+console.log(process.env.CLOUD_SQL_CONNECTION_NAME);
 const cors = require("cors");
 const express = require("express");
 const mysql = require("mysql2");
@@ -36,14 +36,19 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/data", async (req, res) => {
-  const [maxTeamId] = await db.promise().query("SELECT MAX(id) as maxId FROM Team");
-  const maxId = maxTeamId[0].maxId;
-	console.log("maxId:", maxId);
-  const [teams] = await db.promise().query("SELECT * FROM Team WHERE id = ?", [maxId]);
-  const [members] = await db.promise().query("SELECT * FROM Members WHERE teamId = ?", [maxId]);
-  const [commands] = await db.promise().query("SELECT * FROM Commands WHERE teamId = ? ORDER BY `id`", [maxId]);
+  try {
+    const [maxTeamId] = await db.promise().query("SELECT MAX(id) as maxId FROM Team");
+    const maxId = maxTeamId[0].maxId;
+    console.log("maxId:", maxId);
+    const [teams] = await db.promise().query("SELECT * FROM Team WHERE id = ?", [maxId]);
+    const [members] = await db.promise().query("SELECT * FROM Members WHERE teamId = ?", [maxId]);
+    const [commands] = await db.promise().query("SELECT * FROM Commands WHERE teamId = ? ORDER BY `id`", [maxId]);
 
-  res.json({ teams, members, commands });
+    res.json({ teams, members, commands });
+  } catch (error) {
+    console.error("Error in /data handler:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 // to support JSON-encoded bodies

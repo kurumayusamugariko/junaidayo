@@ -5,20 +5,20 @@
   background-color: rgb(255, 253, 245);
   border-radius: 15px;
 }
+
 .teamMembers {
-  margin-left: 8%;
-}
-.teamMembers img {
-  padding: 10px 30px;
-  max-width: 120px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+  margin-left: 7%;
 }
 
 .name {
-	width: 179.2px;
+	width: 20%;
   display: inline-block;
   font-size:min(1.3vw,20px);
-  /* padding-right: 60px;
-  padding-left: 52px; */
   font-weight: bold;
 }
 .wave {
@@ -28,16 +28,15 @@
 }
 .turn{
 	height: 42px;
+  display: flex;
 }
 .t {
-  width: 120px;
-  float: left;
+  width: 20%;
   padding: 10px 30px;
 }
 .turnNumber {
   width: 7%;
   padding: 10px;
-  float: left;
   background-color: rgb(223, 212, 201);
 }
 
