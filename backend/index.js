@@ -1,7 +1,6 @@
 const env = require("dotenv").config();
 console.log(process.env.DB_USER, process.env.DB_PASS);
 const cors = require("cors");
-// const bodyParser = require("body-parser");
 const express = require("express");
 const mysql = require("mysql2");
 const app = express();
@@ -10,13 +9,20 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
+const dbConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-});
+};
 
+if (process.env.CLOUD_SQL_CONNECTION_NAME) {
+  dbConfig.socketPath = `/cloudsql/${process.env.CLOUD_SQL_CONNECTION_NAME}`;
+} else {
+  dbConfig.host = process.env.DB_HOST || '127.0.0.1';
+  dbConfig.port = process.env.DB_PORT || 3306;
+}
+
+const db = mysql.createPool(dbConfig);
 app.get("/", (req, res) => {
   const sqlSelect = "SELECT * FROM Commands ORDER BY id";
 

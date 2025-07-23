@@ -82,10 +82,12 @@ function Mainpage() {
         <img className="m2" alt="２" src={members[1].imageSrc}></img>
         <img className="m3" alt="３" src={members[2].imageSrc}></img>
         <img className="m4" alt="４" src={members[3].imageSrc}></img>
+        <img className="m5" alt="５" src={members[4].imageSrc}></img>
         <p className="name">{members[0].memberName}</p>
         <p className="name">{members[1].memberName}</p>
         <p className="name">{members[2].memberName}</p>
         <p className="name">{members[3].memberName}</p>
+        <p className="name">{members[4].memberName}</p>
       </div>
 
       <div className="command-container">
@@ -102,6 +104,7 @@ function Mainpage() {
                     <div className="second t">{command.turn2}</div>
                     <div className="third t">{command.turn3}</div>
                     <div className="forth t">{command.turn4}</div>
+                    <div className="fifth t">{command.turn5}</div>
                   </div>
                 </div>
               );

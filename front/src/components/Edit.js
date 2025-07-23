@@ -388,6 +388,32 @@ function Edit() {
                           <option value="15thOption">4←技C</option>
                           <option value="16thOption">4←必</option>
                         </select>
+                        <select
+                          className="turn"
+                          name="turn5"
+                          data-index={index}
+                          onChange={handleSelectChange}
+                        >
+                          <option value="firstOption">1←技A</option>
+                          <option value="secondOption">1←技B</option>
+                          <option value="3rdOption">1←技C</option>
+                          <option value="4thOption">1←必</option>
+
+                          <option value="5thOption">2←技A</option>
+                          <option value="6thOption">2←技B</option>
+                          <option value="7thOption">2←技C</option>
+                          <option value="8thOption">2←必</option>
+
+                          <option value="9thOption">3←技A</option>
+                          <option value="10thOption">3←技B</option>
+                          <option value="11thOption">3←技C</option>
+                          <option value="12thOption">3←必</option>
+
+                          <option value="13thOption">4←技A</option>
+                          <option value="14thOption">4←技B</option>
+                          <option value="15thOption">4←技C</option>
+                          <option value="16thOption">4←必</option>
+                        </select>
                         <DeleteIcon
                           className="deleteIcon"
                           onClick={() => handleDelete(index)}
