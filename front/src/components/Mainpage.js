@@ -25,6 +25,7 @@ function Mainpage() {
     1: { memberName: "", imageSrc: "" },
     2: { memberName: "", imageSrc: "" },
     3: { memberName: "", imageSrc: "" },
+    4: { memberName: "", imageSrc: "" },
   });
   const [commands, setCommands] = useState([]);
   const [memo, setMemo] = useState("");
